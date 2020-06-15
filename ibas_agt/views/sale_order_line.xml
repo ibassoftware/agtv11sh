@@ -1,0 +1,58 @@
+<odoo>
+<data>
+    <record id="sale_order_line_view_pivot" model="ir.ui.view">
+        <field name="name">sale.order.line.view.pivot</field>
+        <field name="model">sale.order.line</field>
+        <field name="arch" type="xml">
+            <pivot string="" disable_linking="true">
+
+            </pivot>
+        </field>
+    </record>
+
+    <record id="sale_order_line_ibas_view_tree" model="ir.ui.view">
+        <field name="name">sale.order.line.view.tree</field>
+        <field name="model">sale.order.line</field>
+        <field name="arch" type="xml">
+            <tree string="Sales Reports" create="false">
+            <field name="order_id"/>
+                <field name="order_partner_id"/>
+                <field name="name"/>
+                <field name="salesman_id"/>
+                <field name="qty_delivered" sum="Total"/>
+                <field name="qty_invoiced" sum="Total"/>
+                <field name="price_subtotal" sum="Total"/>
+                <field name="total_cost" sum="Total"/>
+                <field name="gross_margin" sum="Total"/>
+                <field name="team_name"/>
+                <field name="invoice_number"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="sale_order_line_action" model="ir.actions.act_window">
+        <field name="name">Sales Report</field>
+        <field name="res_model">sale.order.line</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form,pivot</field>
+        <field name="view_id" ref="sale_order_line_view_pivot"/>
+        <field name="view_id" ref="sale_order_line_ibas_view_tree"/>
+        <field name="domain">[('amt_invoiced','>',0),('qty_delivered','>',0)
+        ]</field>
+        <field name="context">{}</field>
+    </record>
+
+
+<!-- 
+    <menuitem
+        id="sale_order_line_menu"
+        name="Sales Reports"
+        action="sale_order_line_action"
+        parent="account.menu_finance_reports"
+        sequence="10"/> -->
+
+    
+
+
+</data>
+</odoo>

@@ -1,0 +1,73 @@
+<odoo>
+  <data>
+
+
+  <record id="ibas_view_bank_statement_view_form" model="ir.ui.view">
+    <field name="name">account.bank.statement.view.form</field>
+    <field name="model">account.bank.statement</field>
+    <field name="inherit_id" ref="account.view_bank_statement_form"/>
+    <field name="arch" type="xml">
+       <xpath expr="//field[@name='state']" position="before">
+          <button string="Generate Difference" name="onchange_balance_end_real" type="object" class="oe_highlight" states="open"/>
+        </xpath>
+    </field>
+  </record>
+
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="ibas_agt.list">
+      <field name="name">ibas_agt list</field>
+      <field name="model">ibas_agt.ibas_agt</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="ibas_agt.action_window">
+      <field name="name">ibas_agt window</field>
+      <field name="res_model">ibas_agt.ibas_agt</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="ibas_agt.action_server">
+      <field name="name">ibas_agt server</field>
+      <field name="model_id" ref="model_ibas_agt_ibas_agt"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="ibas_agt" id="ibas_agt.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="ibas_agt.menu_1" parent="ibas_agt.menu_root"/>
+    <menuitem name="Menu 2" id="ibas_agt.menu_2" parent="ibas_agt.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="ibas_agt.menu_1_list" parent="ibas_agt.menu_1"
+              action="ibas_agt.action_window"/>
+    <menuitem name="Server to list" id="ibas_agt" parent="ibas_agt.menu_2"
+              action="ibas_agt.action_server"/>
+    -->
+  </data>
+</odoo>

@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id="product_public_category_form_view" model="ir.ui.view">
+            <field name="name">product.public.category.form.inherit</field>
+            <field name="model">product.public.category</field>
+            <field name="inherit_id" ref="website_sale.product_public_category_form_view"/>
+            <field name="arch" type="xml">
+                <field name="sequence" position="after">
+                  <field name="website_size_x"/>
+                  <field name="website_size_y"/>
+                  <field name="website_style_ids" widget="many2many_tags"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

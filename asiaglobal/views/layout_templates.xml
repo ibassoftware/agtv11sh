@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- START SERVICE QUOTE -->
+        <template id="external_layout_service_quotation">
+            <t t-if="not o and doc">
+                <t t-set="o" t-value="doc"/>
+            </t>
+
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+
+            <t t-call="asiaglobal.external_layout_service_quotation_custom"><t t-raw="0"/></t>
+        </template>
+
+        <template id="external_layout_service_quotation_custom">
+            <div class="header">
+               <img t-if="company.logo" t-att-src="b'data:image/png;base64,%s' % company.logo" class="pull-left"/>
+                <!-- <img src='/asiaglobal/static/src/img/agtprimary' style="height:100%;"/> -->
+            </div>
+
+            <div class="article o_report_layout_standard">
+                <t t-raw="0" />
+            </div>
+
+            <div class="footer">
+                <p style="font-size:12px">
+                    Building B2A Granville Industrial ComplexBrgy. Bancal Carmona, Cavite 4116 Telephone: 63 (046) 413 1408eFax: 63 (02) 857 2169 corporate@asiaglobaltec.com
+                </p>
+                <div class="row" style="font-size: 14px;color: red;">
+                    <div class="col-xs-12">
+                        <p> <b>Solutions. Satisfaction.</b></p>
+                    </div>
+                    <!-- <div class="col-xs-4 text-muted text-right">
+                        Page <span class="page"/> of <span class="topage"/>
+                    </div> -->
+                </div>
+            </div>
+        </template>
+        <!-- END SERVICE QUOTE -->
+
+        <!-- START SERVICE REPORT -->
+        <template id="external_layout_service_report">
+            <t t-if="not o and doc">
+                <t t-set="o" t-value="doc"/>
+            </t>
+
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+
+            <t t-call="asiaglobal.external_layout_service_report_custom"><t t-raw="0"/></t>
+        </template>
+
+        <template id="external_layout_service_report_custom">
+            <div class="header">
+               <!-- <img t-if="company.logo" t-att-src="b'data:image/png;base64,%s' % company.logo" class="pull-left"/> -->
+            </div>
+
+            <div class="article o_report_layout_standard">
+                <t t-raw="0" />
+            </div>
+
+            <div class="footer">
+                <p style="font-size:10px">
+                    <i><b>Address and Contact Details</b></i><br/>
+                    <span>AGT Building</span><br/>
+                    <span> Granville Industrial Complex, Brgy. Bancal</span>
+                    <span>Carmona, Cavite 4116</span><br/>
+                    <span>Service Hotline +63 (02) 899 1802</span><br/>
+                    <span>eFax: 63 (02) 857 2169</span>
+                </p>
+            </div>
+        </template>
+        <!-- END SERVICE REPORT -->
+
+        <!-- START JOB ORDER -->
+        <template id="external_layout_job_order">
+            <t t-if="not o and doc">
+                <t t-set="o" t-value="doc"/>
+            </t>
+
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+
+            <t t-call="asiaglobal.external_layout_job_order_custom"><t t-raw="0"/></t>
+        </template>
+
+        <template id="external_layout_job_order_custom">
+            <div class="header">
+               <img t-if="company.logo" t-att-src="b'data:image/png;base64,%s' % company.logo" class="pull-left"/>
+                <!-- <img src='/asiaglobal/static/src/img/agtprimary' style="height:100%;"/> -->
+            </div>
+
+            <div class="article o_report_layout_standard">
+                <t t-raw="0" />
+            </div>
+
+            <div class="footer">
+                <p style="font-size:12px">
+                    Building B2A Granville Industrial ComplexBrgy. Bancal Carmona, Cavite 4116 Telephone: 63 (046) 413 1408eFax: 63 (02) 857 2169 corporate@asiaglobaltec.com
+                </p>
+                <div class="row" style="font-size: 14px;color: red;">
+                    <div class="col-xs-12">
+                        <p> <b>Solutions. Satisfaction.</b></p>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <!-- END JOB ORDER -->
+
+
+        <!-- START JOB / MATERIAL REQUEST FORM -->
+        <template id="external_layout_job_material_request">
+            <t t-if="not o and doc">
+                <t t-set="o" t-value="doc"/>
+            </t>
+
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+
+            <t t-call="asiaglobal.external_layout_job_material_request_custom"><t t-raw="0"/></t>
+        </template>
+
+        <template id="external_layout_job_material_request_custom">
+            <div class="article o_report_layout_standard">
+                <t t-raw="0" />
+            </div>
+            <div class="footer">
+                <div class="row text-center" style="font-size:14px;">
+                    <div class="col-xs-4">
+                        <span t-field="o.create_uid.name"/>
+                    </div>
+                    <div class="col-xs-4">
+                        <t t-if="o.jo_id.type in ['weqd','weqd_ctd','weqd_sale']">
+                            <span>Jonas M. Conopio</span>
+                        </t>
+                        <t t-elif="o.jo_id.type in ['heqd','heqd_sale']">
+                            <span>Arturo V. Darjuan</span>
+                        </t>
+                        <t t-elif="o.jo_id.type in ['rental']">
+                            <span>Manuel H. Valera Jr.</span>
+                        </t>
+                        <t t-elif="o.jo_id.type in ['cebu']">
+                            <span>Rudie Cabardo</span>
+                        </t>
+                    </div>
+                    <div class="col-xs-4 text-center">
+                        <span>Joanne Malijan / Alexis Ramos</span>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <!-- END JOB / MATERIAL REQUEST FORM -->
+
+         <!-- START ACCOUNT INVOICE -->
+        <template id="external_layout_agt_account_invoice">
+            <t t-if="not o and doc">
+                <t t-set="o" t-value="doc"/>
+            </t>
+
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+
+            <t t-call="asiaglobal.external_layout_agt_account_invoice_custom"><t t-raw="0"/></t>
+        </template>
+
+        <template id="external_layout_agt_account_invoice_custom">
+            <!-- <div t-attf-style="background-image:url('/asiaglobal/static/img/invoice.PNG');  no-repeat; background-size: cover;"> -->
+            <!-- <div class="header">
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+              
+            </div> -->
+
+            <div class="article o_report_layout_standard">
+                <t t-raw="0" />
+            </div>
+
+            <!-- <div class="footer">
+            </div>
+            </div> -->
+        </template>
+        <!-- END ACCOUNT INVOICE -->
+
+        <!-- START JOB ORDER SHOOT TO PRINT -->
+        <template id="external_layout_job_order_stp">
+            <t t-if="not o and doc">
+                <t t-set="o" t-value="doc"/>
+            </t>
+
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+
+            <t t-call="asiaglobal.external_layout_job_order_stp_custom"><t t-raw="0"/></t>
+        </template>
+
+        <template id="external_layout_job_order_stp_custom">
+            
+            <div class="article o_report_layout_standard">
+                <t t-raw="0" />
+            </div>
+
+        </template>
+        <!-- END JOB ORDER SHOOT TO PRINT -->
+
+        <!-- START PURCHASE QUOTATION -->
+        <template id="external_layout_purchase_quotation_asiaglobal">
+            <style type="text/css"> 
+                body {
+                    font-family: 'Tahoma Regular';
+                }
+            </style>
+            <t t-if="not o and doc">
+                <t t-set="o" t-value="doc"/>
+            </t>
+
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+
+            <t t-call="asiaglobal.external_layout_purchase_quotation_asiaglobal_custom"><t t-raw="0"/></t>
+        </template>
+
+        <template id="external_layout_purchase_quotation_asiaglobal_custom">
+            <div class="header custom_font">
+                <table class="list_table" style="border:none;font-size:12px" width="100%">
+                    <tr>
+                        <td class="noborder" width="8%">
+                            <br/>
+                            <img src="/asiaglobal/static/src/img/logo_a.PNG" height="45" width="50" />
+                        </td>
+                        <td class="noborder" width="43%">
+                            <!-- <img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)" width="60" height="60"/> -->
+                            <br/>
+                            <b><h4 style="color:red;">AsiaGlobal Technologies, Inc.</h4></b>
+
+                            <table class="list_table" style="border:none;font-size:12px" width="100%">
+                                <tr>
+                                    <td class="noborder" valign="top" width="63%">
+                                        <span t-field="o.company_id.partner_id.street"/>
+                                        <span t-if="o.company_id.partner_id.street2">, <span t-field="o.company_id.partner_id.street2"/></span>
+                                        <span t-if="o.company_id.partner_id.city">, <span t-field="o.company_id.partner_id.city"/></span>
+                                        <span t-if="o.company_id.partner_id.state_id">, <span t-field="o.company_id.partner_id.state_id.name"/></span><span t-if="o.company_id.partner_id.country_id">, <span t-field="o.company_id.partner_id.country_id.name"/></span>
+                                    </td>
+                                    <td class="noborder" valign="top" width="2%"></td>
+                                    <td class="noborder" valign="top" width="35%">
+                                        Phone # 02-8899-1801<br/>
+                                        www.asiaglobaltech.com
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="noborder" width="8%">
+                        </td>
+                        <td class="noborder" width="41%" align="right" style="vertical-align: top;">
+                            <br/>
+                            <h3>
+                                <span>Request For Quotation</span>
+                            </h3>
+                            <table width="60%">
+                                <tr>
+                                    <td class="td_border">Date</td>
+                                    <td class="td_border">P.O. No.</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_border"><span t-field="o.date_order" t-options='{"format": "yyyy-MM-dd"}'/></td>
+                                    <td class="td_border"><span t-field="o.name"/></td>
+                                </tr>
+                            </table>
+
+
+                        </td>
+                    </tr>
+                </table>
+               
+            </div>
+
+            <div class="article o_report_layout_standard custom_font">
+                <t t-raw="0" />
+            </div>
+
+            <div class="footer custom_font">
+                <table style="border: 1px solid black;font-size:14px;" width="100%">
+                    <tbody>
+                        <tr style="font-size:14px;">
+                            <td colspan="6" style="padding:0;border: 1px solid black;">
+                            </td>
+                        </tr>
+                        <tr style="font-size:14px;">
+                            <td colspan="6" class="td_border">
+                                <div class="col-xs-3" style="padding:0.5em;">
+                                    <center>
+                                        <b>Prepared By:</b><br/><br/>
+                                        _________________________<br/>
+                                        <span t-field="o.prepared_by.name"/><br/>
+                                        Name &amp; Signature
+                                    </center>
+                                </div>
+                                <div class="col-xs-3" style="padding:0.5em;">
+                                    <center>
+                                        <b>Approver 1:</b><br/><br/>
+                                        _________________________<br/><br/>
+                                        Dept. Manager
+                                    </center>
+                                </div>
+                                <div class="col-xs-3" style="padding:0.5em;">
+                                    <center>
+                                        <b>Approver 2:</b><br/><br/>
+                                        _________________________<br/>
+                                        J. Malijan <br/>
+                                        AVP - Finance &amp; Admin
+                                    </center>
+                                </div>
+                                <div class="col-xs-3" style="padding:0.5em;">
+                                    <center>
+                                        <b>Noted By:</b><br/><br/>
+                                        _________________________<br/>
+                                        A. RAMOS <br/>
+                                        President
+                                    </center>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-center">
+                    Page <span class="page"/>
+                </div>
+            </div>
+        </template>
+        <!-- END PURCHASE QUOTATION -->
+
+        <!-- START PURCHASE -->
+        <template id="external_layout_purchase_asiaglobal">
+
+            <t t-if="not o and doc">
+                <t t-set="o" t-value="doc"/>
+            </t>
+
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+
+            <t t-call="asiaglobal.external_layout_purchase_asiaglobal_custom"><t t-raw="0"/></t>
+        </template>
+
+        <template id="external_layout_purchase_asiaglobal_custom">
+            <!-- <div t-attf-style="background-image:url('/chocovron/static/img/DR2.jpg');  no-repeat; background-size: cover;"> -->
+            <div class="header custom_font">
+                <table class="list_table" style="border:none;font-size:12px" width="100%">
+                    <tr>
+                        <td class="noborder" width="8%">
+                            <br/>
+                            <img src="/asiaglobal/static/src/img/logo_a.PNG" height="45" width="50" />
+                        </td>
+                        <td class="noborder" width="43%">
+                            <!-- <img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)" width="60" height="60"/> -->
+                            <br/>
+                            <b><h4 style="color:red;">AsiaGlobal Technologies, Inc.</h4></b>
+
+                            <table class="list_table" style="border:none;font-size:12px" width="100%">
+                                <tr>
+                                    <td class="noborder" valign="top" width="63%">
+                                        <span t-field="o.company_id.partner_id.street"/>
+                                        <span t-if="o.company_id.partner_id.street2">, <span t-field="o.company_id.partner_id.street2"/></span>
+                                        <span t-if="o.company_id.partner_id.city">, <span t-field="o.company_id.partner_id.city"/></span>
+                                        <span t-if="o.company_id.partner_id.state_id">, <span t-field="o.company_id.partner_id.state_id.name"/></span><span t-if="o.company_id.partner_id.country_id">, <span t-field="o.company_id.partner_id.country_id.name"/></span>
+                                    </td>
+                                    <td class="noborder" valign="top" width="2%"></td>
+                                    <td class="noborder" valign="top" width="35%">
+                                        Phone # 02-8899-1801<br/>
+                                        www.asiaglobaltech.com
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="noborder" width="8%">
+                        </td>
+                        <td class="noborder" width="41%" align="right" style="vertical-align: top;">
+                            <br/>
+                            <h3 t-if="o.state != 'draft'">
+                                <span>Purchase Order</span>
+                            </h3>
+                            <h3 t-if="o.state == 'draft'">
+                                <span>Request For Quotation</span>
+                            </h3>
+                            <table width="60%">
+                                <tr>
+                                    <td class="td_border">Date</td>
+                                    <td class="td_border">P.O. No.</td>
+                                </tr>
+                                <tr>
+                                    <td class="td_border"><span t-field="o.date_order" t-options='{"format": "yyyy-MM-dd"}'/></td>
+                                    <td class="td_border"><span t-field="o.name"/></td>
+                                </tr>
+                            </table>
+
+
+                        </td>
+                    </tr>
+                </table>
+               
+            </div>
+
+            <div class="article o_report_layout_standard custom_font">
+                <t t-raw="0" />
+            </div>
+
+            <div class="footer custom_font">
+                <table style="border: 1px solid black;font-size:14px;" width="100%">
+                    <tbody>
+                        <tr style="font-size:14px;">
+                            <td colspan="6" style="padding:0;border: 1px solid black;">
+                            </td>
+                        </tr>
+                        <tr style="font-size:14px;">
+                            <td colspan="6" class="td_border">
+                                <div class="col-xs-3" style="padding:0.5em;">
+                                    <center>
+                                        <b>Prepared By:</b><br/><br/>
+                                        _________________________<br/>
+                                        <span t-field="o.prepared_by.name"/><br/>
+                                        Name &amp; Signature
+                                    </center>
+                                </div>
+                                <div class="col-xs-3" style="padding:0.5em;">
+                                    <center>
+                                        <b>Approver 1:</b><br/><br/>
+                                        _________________________<br/><br/>
+                                        Dept. Manager
+                                    </center>
+                                </div>
+                                <div class="col-xs-3" style="padding:0.5em;">
+                                    <center>
+                                        <b>Approver 2:</b><br/><br/>
+                                        _________________________<br/>
+                                        J. Malijan <br/>
+                                        AVP - Finance &amp; Admin
+                                    </center>
+                                </div>
+                                <div class="col-xs-3" style="padding:0.5em;">
+                                    <center>
+                                        <b>Noted By:</b><br/><br/>
+                                        _________________________<br/>
+                                        A. RAMOS <br/>
+                                        President
+                                    </center>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-center">
+                    Page <span class="page"/>
+                </div>
+            </div>
+        <!-- </div> -->
+        </template>
+        <!-- END PURCHASE -->
+
+         <!-- START ITEM RECEIPT -->
+        <template id="external_layout_stock_item_receipt">
+            <t t-if="not o and doc">
+                <t t-set="o" t-value="doc"/>
+            </t>
+
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+
+            <t t-call="asiaglobal.external_layout_stock_item_receipt_custom"><t t-raw="0"/></t>
+        </template>
+
+        <template id="external_layout_stock_item_receipt_custom">
+            <div class="header">
+                <table class="list_table" style="border:none;font-size:12px" width="100%">
+                    <tr>
+                        <img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)" width="200" height="60"/>
+                    </tr>
+                </table>
+               
+            </div>
+
+            <div class="article o_report_layout_standard">
+                <t t-raw="0" />
+            </div>
+
+            <div class="footer">
+                
+            </div>
+        </template>
+        <!-- END ITEM RECEIPT -->
+
+        <!-- START ACCOUNT INVOICE -->
+        <template id="external_layout_agt_delivery">
+            <t t-if="not o and doc">
+                <t t-set="o" t-value="doc"/>
+            </t>
+
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+
+            <t t-call="asiaglobal.external_layout_agt_delivery_custom"><t t-raw="0"/></t>
+        </template>
+
+        <template id="external_layout_agt_delivery_custom">
+            <!-- <div t-attf-style="background-image:url('/asiaglobal/static/img/invoice.PNG');  no-repeat; background-size: cover;"> -->
+            <!-- <div class="header">
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+              
+            </div> -->
+
+            <div class="article o_report_layout_standard">
+                <t t-raw="0" />
+            </div>
+
+            <!-- <div class="footer">
+            </div>
+            </div> -->
+        </template>
+        <!-- END ACCOUNT INVOICE -->
+
+        <!-- START ACCOUNT PAYABLE VOUCHER -->
+        <template id="external_layout_account_payable_voucher">
+            <t t-if="not o and doc">
+                <t t-set="o" t-value="doc"/>
+            </t>
+
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+
+            <t t-call="asiaglobal.external_layout_account_payable_voucher_custom"><t t-raw="0"/></t>
+        </template>
+
+        <template id="external_layout_account_payable_voucher_custom">
+            <div class="header custom_font">
+                <!-- <table class="list_table" style="border:none;font-size:12px" width="100%">
+                    <tr>
+                        <img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)" width="200" height="60"/>
+                    </tr>
+                </table> -->
+                <table class="list_table" style="border:none;font-size:12px" width="100%">
+                    <tr>
+                        <td class="noborder" width="8%">
+                            <br/>
+                            <img src="/asiaglobal/static/src/img/logo_a.PNG" height="45" width="50" />
+                        </td>
+                        <td class="noborder" width="43%">
+                            <!-- <img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)" width="60" height="60"/> -->
+                            <br/>
+                            <b><h4 style="color:red;">AsiaGlobal Technologies, Inc.</h4></b>
+
+                            <table class="list_table" style="border:none;font-size:12px" width="100%">
+                                <tr>
+                                    <td class="noborder" valign="top" width="63%">
+                                        <span t-field="o.company_id.partner_id.street"/>
+                                        <span t-if="o.company_id.partner_id.street2">, <span t-field="o.company_id.partner_id.street2"/></span>
+                                        <span t-if="o.company_id.partner_id.city">, <span t-field="o.company_id.partner_id.city"/></span>
+                                        <span t-if="o.company_id.partner_id.state_id">, <span t-field="o.company_id.partner_id.state_id.name"/></span><span t-if="o.company_id.partner_id.country_id">, <span t-field="o.company_id.partner_id.country_id.name"/></span>
+                                    </td>
+                                    <td class="noborder" valign="top" width="2%"></td>
+                                    <td class="noborder" valign="top" width="35%">
+                                        Phone # 02-8899-1801<br/>
+                                        www.asiaglobaltech.com
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="noborder" width="8%">
+                        </td>
+                        <td class="noborder" width="41%" align="right" style="vertical-align: top;">
+                            <br/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="article o_report_layout_standard custom_font">
+                <t t-raw="0" />
+            </div>
+
+            <div class="footer custom_font">
+                <table class="list_table" style="border:none;font-size:14px" width="100%">
+                    <tr>
+                        <td class="noborder" valign="top" width="25%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                            <b>PREPARED BY: </b>
+                            <br/>
+                            <br/>
+                            <center>
+                                <span>__________________________</span><br/>
+                                <span>AP Assistant</span>
+                            </center>
+                        </td>
+                        <td class="noborder" valign="top" width="25%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                            <b>CHECKED BY: </b>
+                            <br/>
+                            <br/>
+                            <center>
+                                <span>__________________________</span><br/>
+                                <span>Jr. Accounting Manager</span>
+                            </center>
+                        </td>
+                        <td class="noborder" valign="top" width="25%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                            <b>NOTED BY: </b>
+                            <br/>
+                            <br/>
+                            <center>
+                                <span>__________________________</span><br/>
+                                <span>AVP - Finance &amp; Admin</span>
+                            </center>
+                        </td>
+                        <td class="noborder" valign="top" width="25%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                            <b>APPROVED BY: </b>
+                            <br/>
+                            <br/>
+                            <center>
+                                <span>__________________________</span><br/>
+                                <span>President</span>
+                            </center>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </template>
+        <!-- END START ACCOUNT PAYABLE VOUCHER -->
+
+        <!-- START PAYMENT RECEIPT -->
+        <template id="external_layout_account_payment_receipt">
+            <t t-if="not o and doc">
+                <t t-set="o" t-value="doc"/>
+            </t>
+
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+
+            <t t-call="asiaglobal.external_layout_account_payment_receipt_custom"><t t-raw="0"/></t>
+        </template>
+
+        <template id="external_layout_account_payment_receipt_custom">
+            <div class="header custom_font">
+                <table class="list_table" style="border:none;font-size:12px" width="100%">
+                    <tr>
+                        <td class="noborder" width="8%">
+                            <br/>
+                            <img src="/asiaglobal/static/src/img/logo_a.PNG" height="45" width="50" />
+                        </td>
+                        <td class="noborder" width="43%">
+                            <br/>
+                            <b><h4 style="color:red;">AsiaGlobal Technologies, Inc.</h4></b>
+
+                            <table class="list_table" style="border:none;font-size:12px" width="100%">
+                                <tr>
+                                    <td class="noborder" valign="top" width="63%">
+                                        <span t-field="o.company_id.partner_id.street"/>
+                                        <span t-if="o.company_id.partner_id.street2">, <span t-field="o.company_id.partner_id.street2"/></span>
+                                        <span t-if="o.company_id.partner_id.city">, <span t-field="o.company_id.partner_id.city"/></span>
+                                        <span t-if="o.company_id.partner_id.state_id">, <span t-field="o.company_id.partner_id.state_id.name"/></span><span t-if="o.company_id.partner_id.country_id">, <span t-field="o.company_id.partner_id.country_id.name"/></span>
+                                    </td>
+                                    <td class="noborder" valign="top" width="2%"></td>
+                                    <td class="noborder" valign="top" width="35%">
+                                        Phone # 02-8899-1801<br/>
+                                        www.asiaglobaltech.com
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="noborder" width="8%">
+                        </td>
+                        <td class="noborder" width="41%" align="right" style="vertical-align: top;">
+                            <br/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="article o_report_layout_standard custom_font">
+                <t t-raw="0" />
+            </div>
+
+            <div class="footer custom_font">
+            </div>
+        </template>
+        <!-- END START ACCOUNT PAYABLE VOUCHER -->
+
+    </data>
+</odoo>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_config_settings_view_form_inherit_extend" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.extend</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="hr_expense.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+            	<div data-key="hr_expense" position="inside">
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-xs-12 col-md-6 o_setting_box" title="Option to post entries automatically or not.">
+                            <div class="o_setting_right_pane">
+                                <label for="group_account_expense_status"/>
+                                <div class="text-muted">
+                                	Option to post entries automatically or not.
+                                </div>
+                                <div class="content-group">
+                                	<field name="group_account_expense_status"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

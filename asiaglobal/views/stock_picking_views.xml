@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_picking_form_extend" model="ir.ui.view">
+            <field name="name">stock.picking.form.extend</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='move_lines']/tree/field[@name='product_id']" position="after">
+                    <field name="product_id_code" />
+                    <field name="product_id_partno" string="Material Number"/>
+                    <field name="product_id_description" />
+                    <field name="location"/>
+                </xpath>
+                <xpath expr="//field[@name='move_lines']/tree/field[@name='product_uom']" position="after">
+                    <field name="has_landed_cost" />
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="location" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='move_lines']" position="after">
+                    <field name="remarks" class="oe_inline" placeholder="Add remarks here..."/>
+                    <div class="oe_clear"/>
+                </xpath>
+                <xpath expr="//field[@name='group_id']" position="after">
+                    <field name="validated_by" />
+                    <field name="date_done" />
+                </xpath>
+                <xpath expr="//field[@name='priority']" position="after">
+                    <field name="payment_terms" />
+                    <field name="invoice_no" />
+                    <field name="purchase_no" />
+                    <field name="jmrf_id" />
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

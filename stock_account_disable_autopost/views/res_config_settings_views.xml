@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_stock_config_settings_inherit_extend" model="ir.ui.view">
+            <field name="name">res.config.settings.inherit.extend</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="stock.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+            	<div id="production_lot_info" position="after">
+                    <h2>Accounting</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-xs-12 col-md-6 o_setting_box" title="Option to post entries automatically or not.">
+                            <div class="o_setting_right_pane">
+                                <label for="group_account_move_status"/>
+                                <div class="text-muted">
+                                	Option to post entries automatically or not.
+                                </div>
+                                <div class="content-group">
+                                	<field name="group_account_move_status"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,188 @@
+<odoo>
+  <data>
+
+    <!-- START JOB ORDER -->
+    <record model="ir.ui.view" id="service_job_order_form">
+      <field name="name">asiaglobal.job.order.form</field>
+      <field name="model">asiaglobal.job_order</field>
+      <field name="arch" type="xml">
+        <form string="Job Order">
+          <header>
+            <field name="state" widget="statusbar" statusbar_visible="draft,schedule,waiting,progress,bill,waiting_quote,waiting_order,done"/>
+          </header>
+          <sheet>
+
+            <div class="oe_title">
+              <label for="name"/>
+              <h1>
+                <field name="name"/>
+              </h1>
+            </div>
+
+            <group>
+              <group>
+                <field name="legacy_jo_no"/>
+                <field name="customer_id" domain="[('customer','=',True)]" context="{'search_default_customer':1}" options='{"always_reload": True}'/>
+                <field name="ship_to" context="{'default_type':'delivery', 'show_address': 1}" options='{"always_reload": True}'/>
+                <field name="equipment_id" domain="[('customer','=',customer_id)]"/>
+                <field name="manufacturer"/>
+                <field name="model"/>
+                <field name="serial_number"/>
+                <field name="operational"/>
+                <field name="operational_message" invisible="1"/>
+              </group>
+              <group>
+                <field name="state"/>
+                <field name="type"/>
+                <field name="job_classification"/>
+                <field name="job_type"/>
+                <field name="under_warranty"/>
+                <field name="warranty_date" attrs="{'invisible':[('under_warranty', '=', False)]}"/>
+                <field name="scheduled_date"/>
+                <field name="actual_repair_date"/>
+                <field name="technician_id"/>
+              </group>
+            </group>
+
+            <notebook>
+              <page string="Order Details">
+                <group >
+                  <field name="initial_complaint"/>
+                  <field name="initial_diagnosis"/>
+                </group>
+              </page>
+              <page string="Tickets">
+                <field name="ticket_ids"/>
+              </page>
+              <page string="Project List">
+                <field name="sale_ids"/>
+              </page>
+              <page string="Service Reports">
+                <field name="service_report_ids"/>
+              </page>
+              <page string="Job / Material Request Form">
+                <field name="job_material_request_ids"/>
+              </page>
+              <page string="Timesheets">
+                <field name="timesheet_ids">
+                  <tree editable="bottom" string="Timesheet Activities" default_order="date">
+                    <field name="date"/>
+                    <field name="technician_id" required="1" string="Technician" domain="[('is_technician','=',True)]"/>
+                    <field name="activity_type" options='{"no_open": True,"no_create": 1, "no_create_edit": 1}'/>
+                    <field name="name"/>
+                    <field name="unit_amount" string="Duration" sum="Total hours" widget="float_time"/>
+                    <button name="action_duplicate" type="object" icon="fa-files-o" class="oe_edit_only"/>
+                  </tree>
+                </field>
+              </page>
+            </notebook>
+
+          </sheet>
+          <div class="oe_chatter">
+            <field name="message_follower_ids" widget="mail_followers"/>
+            <field name="activity_ids" widget="mail_activity"/>
+            <field name="message_ids" widget="mail_thread"/>
+          </div>
+
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="service_job_order_tree">
+      <field name="name">asiaglobal.job.order.tree</field>
+      <field name="model">asiaglobal.job_order</field>
+      <field name="arch" type="xml">
+        <tree string="Job Orders">
+          <field name="name" />
+          <field name="legacy_jo_no"/>
+          <field name="customer_id"/>
+          <field name="technician_id"/>
+          <field name="type"/>
+          <field name="job_classification"/>
+          <field name="job_type"/>
+          <field name="equipment_id"/>
+          <field name="serial_number"/>
+          <field name="initial_complaint"/>
+          <field name="scheduled_date"/>
+          <field name="actual_repair_date"/>
+          <field name="state"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="service_job_order_calendar" model="ir.ui.view">
+      <field name="name">asiaglobal.job_order.calendar</field>
+      <field name="model">asiaglobal.job_order</field>
+      <field name="arch" type="xml">
+        <calendar string="Job Orders" date_start="scheduled_date" color="technician_id">
+          <field name="name"/>
+          <field name="customer_id"/>
+        </calendar>
+      </field>
+    </record>
+
+    <record id="asiaglobal_job_order_search" model="ir.ui.view">
+      <field name="name">asiaglobal.job.order.search</field>
+      <field name="model">asiaglobal.job_order</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <search string="Job Order">
+          <field name="name" />
+          <field name="legacy_jo_no"/>
+          <field name="customer_id" />
+          <field name="technician_id"/>
+          <field name="equipment_id"/>
+          <field name="serial_number"/>
+          <field name="state"/>
+          <group expand="0" string="Group By">
+            <filter string="Customer" domain="[]" context="{'group_by':'customer_id'}"/>
+            <filter string="Technician" domain="[]" context="{'group_by':'technician_id'}"/>
+            <filter string="Job Classification" domain="[]" context="{'group_by':'job_classification'}"/>
+            <filter string="Job Type" domain="[]" context="{'group_by':'job_type'}"/>
+            <filter string="Status" domain="[]" context="{'group_by':'state'}"/>
+          </group>
+        </search>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="service_job_order_action">
+      <field name="name">Job Orders</field>
+      <field name="res_model">asiaglobal.job_order</field>
+      <field name="view_mode">tree,form,calendar</field>
+      <field name="search_view_id" ref="asiaglobal_job_order_search" />
+      <field name="help" type="html">
+        <p>
+          Create a job order.
+        </p>
+      </field>
+    </record>
+    <!-- END JOB ORDER -->
+
+    <!-- START JOB ORDER CLASSIFICATION -->
+    <record model="ir.actions.act_window" id="service_job_order_classification_action">
+      <field name="name">Job Order Classifications</field>
+      <field name="res_model">asiaglobal.job_order_classification</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p>
+          Create a job order classifications.
+        </p>
+      </field>
+    </record>
+    <!-- END JOB ORDER CLASSIFICATION -->
+
+    <!-- START JOB ORDER TYPE -->
+    <record model="ir.actions.act_window" id="service_job_order_type_action">
+      <field name="name">Job Order Types</field>
+      <field name="res_model">asiaglobal.job_order_type</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p>
+          Create a job order types.
+        </p>
+      </field>
+    </record>
+    <!-- END JOB ORDER TYPE -->
+
+  </data>
+</odoo>

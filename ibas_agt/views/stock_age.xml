@@ -1,0 +1,36 @@
+
+<odoo>
+<data>
+    <record id="stock_move_age_view_tree" model="ir.ui.view">
+        <field name="name">stock.move.view.tree</field>
+        <field name="model">stock.move</field>
+        <field name="arch" type="xml">
+            <tree string="Stock Age" create="false">
+            <field name="date"/>
+                <field name="product_id"/>
+                <field name="analytic_id"/>
+                <field name="remaining_qty" sum="Total Quantity"/>
+                <field name="remaining_value" sum="Total Value"/>
+                <field name="stock_age"/>
+                <field name="state" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="stock_move_age_action" model="ir.actions.act_window">
+        <field name="name">Stock Age Report</field>
+        <field name="res_model">stock.move</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="stock_move_age_view_tree"/>
+        <field name="domain">[('remaining_qty','>',0)]</field>
+    </record>
+
+    <menuitem
+        id="stock_agev2_menu"
+        name="Stock Age Report v2"
+        action="stock_move_age_action"
+        parent="stock.menu_warehouse_report"
+        sequence="10"/>
+</data>
+</odoo>

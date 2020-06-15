@@ -1,0 +1,120 @@
+<odoo>
+    <template id="assets_frontend" inherit_id="website.assets_frontend" name="website_sale_agt AGT">
+        <xpath expr='.' position="inside">
+            <link rel="stylesheet" href="/website_sale_agt/static/src/css/styles.css"/>
+        </xpath>
+    </template>
+    <data>
+        <template id="option_all_category_and_image" name="All Products or Category Image"
+                  inherit_id="website_sale.products_categories"
+                  active="False" customize_show="True">
+            <xpath expr="//div[@id='products_grid_before']/ul" position="replace">
+                <span t-if="category"
+                      t-attf-content="{{request.httprequest.url_root}}web/image/product.public.category/{{category.id}}/image"
+                      t-field="category.image"
+                      t-options="{'widget': 'image', 'resize': '300x300', 'zoom': 'image'}"
+                      t-att-alt="category.name"/>
+            </xpath>
+        </template>
+
+        <!-- /shop product listing -->
+        <template id="categories" name="Categories">
+            <t t-call="website.layout">
+                <t t-set="additional_title">Brands</t>
+                <div id="wrap" class="js_categories mb16">
+                    <div class="oe_structure"/>
+                    <div class="container oe_website_categories">
+                        <div class="products_pager">
+                            <div class="row" style="width: 100%;">
+                                <t t-call="website_sale.search">
+                                    <t t-set="search_class" t-value="'pagination form-inline o_website_sale_search'"/>
+                                </t>
+                                <t t-call="website.pager"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12" id="products_grid">
+                                <table width="100%">
+                                    <tbody>
+                                        <tr t-ignore="true">
+                                            <td t-foreach="range(0,rows)" t-as="row" t-attf-width="#{100/rows}%"></td>
+                                        </tr>
+                                        <tr t-foreach="bins" t-as="tr_category">
+                                            <t t-foreach="tr_category" t-as="td_category">
+                                                <t t-if="td_category">
+                                                    <t t-set="category" t-value="td_category['category']"/>
+                                                    <td t-att-colspan="td_category['x'] != 1 and td_category['x']"
+                                                        t-att-rowspan="td_category['y'] != 1 and td_category['y']"
+                                                        t-attf-class="oe_product oe_grid oe-height-#{td_category['y']*2} #{ td_category['class'] }">
+                                                        <div class="oe_product_cart">
+                                                            <t t-set="product_image_big"
+                                                               t-value="td_category['x']+td_category['y'] &gt; 2"/>
+                                                            <div class="oe_product_image">
+                                                                <a t-att-href="keep('/shop/category/%s' % slug(category))">
+                                                                    <span t-attf-content="{{request.httprequest.url_root}}web/image/product.public.category/{{category.id}}/image"
+                                                                          t-field="category.image"
+                                                                          t-options="{'widget': 'image', 'resize': None if product_image_big else '300x300', 'zoom': 'image'}"
+                                                                          t-att-alt="category.name"/>
+                                                                </a>
+                                                            </div>
+
+                                                        </div>
+                                                    </td>
+                                                </t>
+                                                <td t-if="not td_category" class="oe-height-2"/>
+                                            </t>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <t t-if="not bins">
+                                    <div class="text-center text-muted oe_product">
+                                        <h3 class="css_editable_display">No brands defined.</h3>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                        <div class="products_pager">
+                            <t t-call="website.pager"/>
+                        </div>
+                    </div>
+                    <div class="oe_structure"/>
+                </div>
+            </t>
+        </template>
+        <template id="subcategories_top" inherit_id="website_sale.products" active="True" customize_show="True"
+                  name="Subcategories on Top">
+            <xpath expr="//div[hasclass('products_pager')]" position="after">
+                <t t-set="categs" t-value="(category + category.child_id) or category.parent_id.child_id"/>
+                <div t-if="categs" class="row">
+                    <div class="subcategories_before col-md-3 col-sm-4 col-xs-12">
+                        <ul class="nav nav-pills mt8 mb8">
+                            <li t-if="category.parent_id">
+                                <a t-att-href="keep('/shop/category/' + slug(category.parent_id), category=0)">
+                                    <i class="fa fa-chevron-left"/>
+                                    Back to
+                                    <t t-esc="category.parent_id.name"/>
+                                </a>
+                            </li>
+                            <li t-if="not category.parent_id">
+                                <a t-att-href="keep('/shop', category=0)">
+                                    <i class="fa fa-chevron-left"/>
+                                    Back to All Products
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="subcategories col-md-9 col-sm-8">
+                        <ul class="nav nav-pills mt8 mb8">
+                            <t t-foreach="categs" t-as="sc">
+                                <li t-att-class="'active' if category.id==sc.id else ''">
+                                    <a t-att-href="keep('/shop/category/' + slug(sc), category=0)"
+                                       t-field="sc.name"></a>
+                                </li>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="agt_website_theme_install_assets" inherit_id="web.assets_frontend" name="AGT Website Theme Install Assets">
+        <xpath expr="." position="inside">
+        	<link href="/asiaglobal_website/static/src/less/fonts.less" rel="stylesheet" type="text/less"/>
+        	<link href="/asiaglobal_website/static/src/less/fonts.less" rel="stylesheet" type="text/less"/>
+            <link href="/asiaglobal_website/static/src/less/variables.less" rel="stylesheet" type="text/less"/>
+        </xpath>
+    </template>
+</odoo>

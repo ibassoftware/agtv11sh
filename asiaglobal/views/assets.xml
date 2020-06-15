@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+		<template id="report_assets_common" name="Technical Service Assets Reports" inherit_id="web.report_assets_common">		
+			<xpath expr="//link[last()]" position="after">			
+				<link href="/asiaglobal/static/src/less/fonts.less" rel="stylesheet" type="text/less"/>
+			</xpath>	
+		</template>
+
+		<template id="assets_backend" inherit_id="web.assets_backend">
+			<xpath expr="." position="inside">
+				<script type="text/javascript" src="/asiaglobal/static/src/js/web_calendar.js"/>
+			</xpath>
+		</template>
+
+</odoo>

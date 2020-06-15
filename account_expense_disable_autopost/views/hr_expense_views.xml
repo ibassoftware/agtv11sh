@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_hr_expense_sheet_form_extend" model="ir.ui.view">
+            <field name="name">hr.expense.sheet.form.extend</field>
+            <field name="model">hr.expense.sheet</field>
+            <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@name='action_sheet_move_create']" position="attributes">
+                    <attribute name="string">Generate Journal Entries</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_sheet_move_create']" position="after">
+                    <button name="action_sheet_move_post" states="unpost" string="Post Journal Entries" type="object" groups="account.group_account_manager" class="oe_highlight o_expense_sheet_post"/>
+                </xpath>
+                <xpath expr="//field[@name='account_move_id']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('state', 'not in', ['unpost', 'post', 'done'])]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='expense_line_ids']/tree/field[@name='analytic_account_id']" position="before">
+                    <field name="account_id" domain="[('internal_type', '=', 'other')]" groups="account.group_account_user" attrs="{'required': [('parent.state', '=', 'approve')]}"/>
+                </xpath>
+                <xpath expr="//field[@name='expense_line_ids']/tree/field[@name='analytic_account_id']" position="attributes">
+                    <attribute name="attrs">{'required': [('parent.state', '=', 'approve')]}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_hr_expense_sheet_form_extend_employee" model="ir.ui.view">
+            <field name="name">hr.expense.sheet.form.extend.employee</field>
+            <field name="model">hr.expense.sheet</field>
+            <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='expense_line_ids']" position="attributes">
+                    <attribute name="attrs">{'readonly': [('state', 'in', ['approve','done','unpost','post'])]}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_hr_expense_sheet_form_extend_officer" model="ir.ui.view">
+            <field name="name">hr.expense.sheet.form.extend.officer</field>
+            <field name="model">hr.expense.sheet</field>
+            <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('hr_expense.group_hr_expense_user')])]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='expense_line_ids']" position="attributes">
+                    <attribute name="attrs">{'readonly': [('state', 'in', ['approve','done','unpost','post'])]}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_hr_expense_sheet_form_extend_accountant" model="ir.ui.view">
+            <field name="name">hr.expense.sheet.form.extend.accountant</field>
+            <field name="model">hr.expense.sheet</field>
+            <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
+            <field name="groups_id" eval="[(6, 0, [ref('account.group_account_user')])]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='expense_line_ids']" position="attributes">
+                    <attribute name="attrs">{'readonly': [('state', 'in', ['done','post'])]}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_hr_expense_sheet_filter_extend" model="ir.ui.view">
+            <field name="name">hr.expense.sheet.filter.extend</field>
+            <field name="model">hr.expense.sheet</field>
+            <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='to_post']" position="attributes">
+                    <attribute name="domain">[('state', 'in', ['approve','unpost'])]</attribute>
+                </xpath>
+                <xpath expr="//filter[@name='approved']" position="attributes">
+                    <attribute name="domain">[('state', 'in', ['approve','unpost','post'])]</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

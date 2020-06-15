@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<template id="asiaglobal_website.frontend_layout" inherit_id="portal.frontend_layout">
+			<xpath expr="//header//a[hasclass('navbar-brand')]" position="replace">
+				<a href="/" class="navbar-brand logo">
+					<img src="/asiaglobal_website/static/src/img/logo_white.png" height="100" width="200" alt="AsiaGlobal" data-original-title="" title=""/>
+				</a>
+			</xpath>
+		</template>
+
+		<template id="asiaglobal_website.homepage" inherit_id="website.homepage">
+			<xpath expr="//div[@id='wrap']" position="replace">
+				<div id="wrap" class="oe_structure oe_empty">
+					<div id="myCarousel1562937293387" class="carousel slide s_banner" data-interval="10000" style="">
+						<ol class="carousel-indicators">
+						  <li data-target="#myCarousel1562937293387" data-slide-to="0" class="active">
+							<br/>
+						  </li>
+						  <li data-target="#myCarousel1562937293387" data-slide-to="1">
+							<br/>
+						  </li>
+						</ol>
+						<div class="carousel-inner">
+						  <div class="item bg-alpha oe_img_bg oe_custom_bg o_bg_img_opt_custom active" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(&quot;/asiaglobal_website/static/src/img/our_company_bg.png&quot;); background-size: 100% auto; background-position: 20% 20%;">
+							<div class="container">
+							  <div class="row content">
+								<br/>
+								<br/>
+								<div class="carousel-content col-md-offset-1 mt128 mb96 col-md-6" style="background-color: rgba(255, 0, 0, 0.1); ">
+									<h1 style="color: #eb1e11;">AsiaGlobal Technologies</h1>
+									<h4 style="color: white;">AsiaGlobal Technologies (AGT) is a full spin-off company emerging from the heritage of being the Philippine market leader and premiere solutions provider in the material handling and allied industries.</h4>
+									<br/>
+									<br/>
+									<p>
+										<a href="/contactus" class="btn btn-success btn-large" data-original-title="" title="">Contact us </a>
+									</p>
+								</div>
+								<br/>
+							  </div>
+							</div>
+						  </div>
+						  <div class="item bg-alpha oe_img_bg o_bg_img_opt_custom oe_custom_bg" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(&quot;/asiaglobal_website/static/src/img/our_company_bg2.png&quot;); background-size: 100% auto; background-position: 20% 20%;">
+							<div class="container">
+							  <div class="row content">
+								<div class="carousel-content col-md-offset-1 mt128 mb96 col-md-9" style="background-color: rgba(255, 0, 0, 0.1);">
+								  <h1 style="color: #eb1e11;">Products &amp; Services</h1>
+								  <h4 style="color: white;">AGT intends to provide high customer service levels and are confident of setting a new benchmark in the Material Handling business. We carry distinguished brands such as Linde Material handling equipment and Metech storage and racking systems. We also offer different products such as Dock levelers, dock shelters, sectional doors, forklift attachments, plastic pallets and crates and bins. We are better equipped to offer comprehensive services that cover the full sales cycle, where every sale is backed by support that includes the product, trainings and after sales service</h4>
+								  <br/>
+								  <br/>
+								  <p>
+									<a href="/contactus" class="btn btn-success btn-large" data-original-title="" title="">Contact us </a>
+								  </p>
+								</div>
+							  </div>
+							</div>
+						  </div>
+						</div>
+						<div class="carousel-control left" data-target="#myCarousel1562937293387" data-slide="prev" style="width: 10%" data-cke-saved-href="#myCarousel1562937293387">
+						  <i class="fa fa-chevron-left"/>
+						</div>
+						<div class="carousel-control right" data-target="#myCarousel1562937293387" data-slide="next" style="width: 10%" data-cke-saved-href="#myCarousel1562937293387">
+						  <i class="fa fa-chevron-right"/>
+						</div>
+					</div>
+
+					<!-- OUR COMMITMENT -->
+					<section class="s_title">
+						<div class="container">
+							<div class="row">
+								<br/>
+								<br/>
+								<div class="col-md-12">
+									<h1 class="text-center">OUR COMMITMENT<br/></h1>
+									<h3 class="text-center text-muted">Solution &amp; Satisfaction </h3><br/><br/>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="s_features oe_img_bg o_bg_img_opt_custom" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(&quot;/asiaglobal_website/static/src/img/our_commitment.png&quot;); background-size: 100% auto; background-position: 100% 50%;">
+						<div class="container">
+							<br/>
+							<br/>
+							<br/>
+							<br/>
+							<div class="row mt16 mb16">
+								<div class="text-center col-md-5 col-md-offset-1" style="background-color: rgba(255, 0, 0, 0.1);">
+									<br/>
+									<br/>
+									<span class="fa fa-gear fa-spin fa-5x" style="color: #eb1e11;"/>
+									<div>
+										<h3 class="mt8 mb0" style="color: #eb1e11;">Solution</h3>
+										<h4 class="text-muted" style="color: white;">We provide quality and effective solutions by bringing in the world’s best equipment manufacturers in the Philippines, backed up with a welltrained technical and support team. </h4>
+									</div>
+									<br/>
+									<br/>
+								</div>
+								<div class="text-center col-md-5 col-md-offset-1" style="background-color: rgba(255, 0, 0, 0.1);">
+									<br/>
+									<br/>
+									<span class="fa fa-star fa-spin fa-5x" style="color: #eb1e11;"/>
+									<div>
+										<h3 class="mt8 mb0" style="color: #eb1e11;">Satisfaction</h3>
+										<h4 class="text-muted" style="color: white;">We focus on giving satisfaction by being true to our words. There will be no overpromises, just real results.</h4><br/>
+									</div>
+									<br/>
+									<br/>
+									<br/>
+								</div>
+							</div>
+							<br/>
+							<br/>
+							<br/>
+							<br/>
+						</div>
+					</section>
+
+					<!-- OUR TEAM -->
+					<section class="s_title">
+						<div class="container">
+							<div class="row">
+								<br/>
+								<br/>
+								<div class="col-md-12">
+									<h1 class="text-center">OUR TEAM<br/></h1>
+									<h3 class="text-center text-muted">AGT is composed of people who have a proven track record in the following aspects: </h3>
+									<h3 class="text-center text-muted"><br/></h3>
+								</div>
+								<br/>
+								<br/>
+							</div>
+						</div>
+					</section>
+
+					<section class="s_company_team oe_img_bg o_bg_img_opt_custom" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(&quot;/asiaglobal_website/static/src/img/our_team_bg.jpg&quot;); background-size: 100% auto; background-position: 20% 40%;">
+						<div class="container">
+							<br/>
+							<br/>
+							<div class="row">
+								<div class="col-md-5 col-md-offset-1 mb32" style="background-color: rgba(255, 0, 0, 0.1);">
+									<div class="row s_no_resize_cols">
+										<br/>
+										<br/>
+										<div class="col-md-4">
+											<img src="/asiaglobal_website/static/src/img/our_team_management.jpg" class="img-responsive img-circle center-block shadow" data-original-title="" title="" width="80" height="80"/>
+										</div>
+										<div class="col-md-8">
+											<h4 style="color: white;">Management experience in overall Material Handling business</h4><br/><br/><br/>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-5 col-md-offset-1 mb32" style="background-color: rgba(255, 0, 0, 0.1);">
+									<div class="row s_no_resize_cols">
+										<br/>
+										<br/>
+										<div class="col-md-4">
+											<img src="/asiaglobal_website/static/src/img/our_team_knowledge.jpg"  class="img-responsive img-circle center-block shadow" width="80" height="80"/>
+										</div>
+										<div class="col-md-8">
+											<h4 style="color: white;">In-depth knowledge and understanding of the products, their application, and after-market support</h4><br/>
+										</div>
+										<br/>
+										<br/>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-5 col-md-offset-1 mb32" style="background-color: rgba(255, 0, 0, 0.1);">
+									<div class="row s_no_resize_cols">
+										<br/>
+										<br/>
+										<div class="col-md-4">
+											<img src="/asiaglobal_website/static/src/img/our_team_sale.jpg" class="img-responsive img-circle center-block shadow" width="80" height="80"/>
+										</div>
+										<div class="col-md-8">
+											<h4 style="color: white;">Established relationship with key customers nationwide</h4><br/><br/><br/>
+										</div>
+										<br/>
+										<br/>
+									</div>
+								</div>
+
+							</div>
+							<div class="row">
+								<div class="col-md-5 col-md-offset-1 mb32" style="background-color: rgba(255, 0, 0, 0.1);">
+									<div class="row s_no_resize_cols">
+										<br/>
+										<br/>
+										<div class="col-md-4">
+											<img src="/asiaglobal_website/static/src/img/our_team_trend.jpg" class="img-responsive img-circle center-block shadow" width="80" height="80"/>
+										</div>
+										<div class="col-md-8">
+											<h4 style="color: white;">Know-how of the industry movement and trends</h4><br/><br/><br/>
+										</div>
+										<br/>
+										<br/>
+									</div>
+								</div>
+							</div>
+							<br/>
+							<br/>
+						</div>
+					</section>
+
+					<!-- OUR PARTNERS -->
+					<section class="s_title">
+						<div class="container">
+							<div class="row">
+								<br/>
+								<br/>
+								<div class="col-md-12">
+									<h1 class="text-center">OUR PARTNERS<br/></h1>
+									<h3 class="text-center text-muted">We carefully choose the partner companies that we will bring in the Philippine market. It is ensured that the brands are of the highest quality, has a proven record in increased productivity, and are made to last longer. </h3><br/><br/>
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<div id="myCarousel1563016267671" class="carousel slide s_banner" data-interval="10000" style="">
+						<ol class="carousel-indicators">
+							<li data-target="#myCarousel1563016267671" data-slide-to="0" class="active">
+								<br/>
+							</li>
+							<li data-target="#myCarousel1563016267671" data-slide-to="1">
+								<br/>
+							</li>
+							<li data-target="#myCarousel1563016267671" data-slide-to="2">
+								<br/>
+							</li>
+							<li data-target="#myCarousel1563016267671" data-slide-to="3">
+								<br/>
+							</li>
+							<li data-target="#myCarousel1563016267671" data-slide-to="4">
+								<br/>
+							</li>
+							<li data-target="#myCarousel1563016267671" data-slide-to="5">
+								<br/>
+							</li>
+							<li data-target="#myCarousel1563016267671" data-slide-to="6">
+								<br/>
+							</li>
+						</ol>
+						<div class="carousel-inner">
+							<!-- LINDE -->
+							<div class="item bg-alpha oe_img_bg oe_custom_bg o_bg_img_opt_custom active" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(&quot;/asiaglobal_website/static/src/img/our_company_bg.png&quot;); background-size: 100% auto; background-position: 20% 20%;">
+								<div class="container">
+									<div class="row content">
+										<div class="carousel-content col-md-12">
+											<br/>
+											<br/>
+											<img class="img-responsive" style="display: block; margin-left: auto; margin-right: auto;" src="/asiaglobal_website/static/src/img/logo_linde.jpg" alt="Linde" data-original-title="" title="" width="170" height="170"/>
+											<h4 class="o_default_snippet_text" style="color: white;">Linde Material handling is one of the largest manufacturers of forklifts in the world. This European brand is renowned for customizing its products according to the unique needs of the market. Moreover, the brand only applies technological innovations if they are proven to achieve sustainable customer benefit.</h4>
+											<h4 style="color: white;"><a href="https://www.linde-mh.com/en/" class="btn btn-success">Learn More</a></h4>
+										</div>
+									</div>
+									<div class="row content">
+										<div class="carousel-img col-md-4 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/linde_product1.PNG" alt="Linde Product 1" data-original-title="" title=""/><br/>
+										</div>
+										<div class="carousel-img col-md-4 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/linde_product2.PNG" alt="Linde Product 2" data-original-title="" title=""/><br/>
+										</div>
+										<div class="carousel-img col-md-4 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/linde_product3.PNG" alt="Linde Product 3" data-original-title="" title=""/><br/>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- METECH -->
+							<div class="item bg-alpha oe_img_bg oe_custom_bg o_bg_img_opt_custom" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(&quot;/asiaglobal_website/static/src/img/our_product_metech_bg.JPG&quot;); background-size: 100% auto; background-position: 20% 20%;">
+								<div class="container">
+									<div class="row content">
+										<div class="carousel-content col-md-12">
+											<br/>
+											<br/>
+											<img class="img-responsive" style="display: block; margin-left: auto; margin-right: auto;" src="/asiaglobal_website/static/src/img/logo_metech.png" alt="Linde" data-original-title="" title="" width="170" height="170"/>
+											<h4 class="o_default_snippet_text" style="color: white;">Known as Malaysia’s leading racking manufacturer, Metech’s wide range of quality products offers a total storage solution. All of its products passed through an extensive test during the Research and Development process, and its specifications are ISO 9001 certified.</h4>
+											<h4 style="color: white;"><a href="https://www.linkedin.com/company/metech-industries-sdn-bhd/about/" class="btn btn-success">Learn More</a></h4><br/><br/><br/><br/>
+										</div>
+									</div>
+									<div class="row content">
+										<div class="carousel-img col-md-4 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/metech_product1.PNG" alt="Metech Product 1" data-original-title="" title=""/><br/>
+										</div>
+										<div class="carousel-img col-md-4 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/metech_product2.PNG" alt="Metech Product 2" data-original-title="" title=""/><br/>
+										</div>
+										<div class="carousel-img col-md-4 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/metech_product3.PNG" alt="Metech Product 3" data-original-title="" title=""/><br/>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- HAKO -->
+							<div class="item bg-alpha oe_img_bg oe_custom_bg o_bg_img_opt_custom" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(&quot;/asiaglobal_website/static/src/img/our_product_hako_bg.jpg&quot;); background-size: 100% auto; background-position: 20% 20%;">
+								<div class="container">
+									<div class="row content">
+										<div class="carousel-content col-md-12">
+											<br/>
+											<br/>
+											<img class="img-responsive" style="display: block; margin-left: auto; margin-right: auto;" src="/asiaglobal_website/static/src/img/logo_hako.jpg" alt="Linde" data-original-title="" title="" width="170" height="170"/>
+											<h4 class="o_default_snippet_text" style="color: white;">This ISO 9901 Certified German brand aims to provide easier solutions to wide-scale indoor and outdoor cleaning and maintenance, offering products from the smallest yet powerful vacuum cleaners, to diesel-powered carrier cum professional, to industrial sweepers.</h4>
+											<h4 style="color: white;"><a href="https://www.hako.com/group_en/index.php" class="btn btn-success">Learn More</a></h4><br/><br/><br/>
+										</div>
+									</div>
+									<div class="row content">
+										<div class="carousel-img col-md-4 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/hako_product1.png" alt="Hako Product 1" data-original-title="" title=""/><br/>
+										</div>
+										<div class="carousel-img col-md-4 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/hako_product2.PNG" alt="Hako Product 2" data-original-title="" title=""/><br/>
+										</div>
+										<div class="carousel-img col-md-4 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/hako_product3.jpg" alt="Hako Product 3" data-original-title="" title=""/><br/>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- HILCO CHEMIE -->
+							<div class="item bg-alpha oe_img_bg oe_custom_bg o_bg_img_opt_custom" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(&quot;/asiaglobal_website/static/src/img/our_product_hilco_chemie_bg.jpg&quot;); background-size: 100% auto; background-position: 20% 60%;">
+								<div class="container">
+									<div class="row content">
+										<div class="carousel-content col-md-12">
+											<br/>
+											<br/>
+											<img class="img-responsive" style="display: block; margin-left: auto; margin-right: auto;" src="/asiaglobal_website/static/src/img/logo_hilco_chemie.png" alt="Linde" data-original-title="" title="" width="170" height="170"/>
+											<h4 class="o_default_snippet_text" style="color: white;">Hilco Chemie, a member of the Hako Group, provides cleaning chemicals for all types of floors and surfaces. They provide solutions from floor maintenance to big or intense cleaning, helping the floor regain its original clean state.</h4>
+											<h4 style="color: white;"><a href="https://hilcochemie.com/en/" class="btn btn-success">Learn More</a></h4><br/><br/><br/><br/>
+										</div>
+									</div>
+									<div class="row content">
+										<div class="carousel-img col-md-4 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/hilco_chemie_product1.PNG" alt="Hilco Chemie Product 1" data-original-title="" title=""/><br/>
+										</div>
+										<div class="carousel-img col-md-4 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/hilco_chemie_product2.PNG" alt="Hilco Chemie Product 2" data-original-title="" title=""/><br/>
+										</div>
+										<div class="carousel-img col-md-4 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/hilco_chemie_product3.PNG" alt="Hilco Chemie Product 3" data-original-title="" title=""/><br/>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- ACS -->
+							<div class="item bg-alpha oe_img_bg oe_custom_bg o_bg_img_opt_custom" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(&quot;/asiaglobal_website/static/src/img/our_product_acs_bg.png&quot;); background-size: 100% auto; background-position: 20% 90%;">
+								<div class="container">
+									<div class="row content">
+										<div class="carousel-content col-md-12">
+											<br/>
+											<br/>
+											<img class="img-responsive" style="display: block; margin-left: auto; margin-right: auto;" src="/asiaglobal_website/static/src/img/logo_acs.png" alt="Linde" data-original-title="" title="" width="170" height="170"/>
+											<h4 class="o_default_snippet_text" style="color: white;">ACS produces floor maintenance pads for stripping, buffing, cleaning, polishing and high-speed burnishing. These pads are carefully made with the right composition of materials to achieve maximum product performance, thus giving a visible result of clean floor.</h4>
+											<h4 style="color: white;"><a href="http://www.scrubble.com/" class="btn btn-success">Learn More</a></h4><br/><br/>
+										</div>
+									</div>
+									<div class="row content">
+										<div class="carousel-img col-md-4 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/acs_product1.jpg" alt="ACS Product 1" data-original-title="" title=""/><br/>
+										</div>
+										<div class="carousel-img col-md-4 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/acs_product2.png" alt="ACS Product 2" data-original-title="" title=""/><br/>
+										</div>
+										<div class="carousel-img col-md-4 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/acs_product3.jpg" alt="ACS Product 3" data-original-title="" title=""/><br/>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- KONECRANES -->
+							<div class="item bg-alpha oe_img_bg oe_custom_bg o_bg_img_opt_custom" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(&quot;/asiaglobal_website/static/src/img/our_company_bg2.png&quot;); background-size: 100% auto; background-position: 20% 90%;">
+								<div class="container">
+									<div class="row content">
+										<div class="carousel-content col-md-12">
+											<br/>
+											<br/>
+											<img class="img-responsive" style="display: block; margin-left: auto; margin-right: auto;" src="/asiaglobal_website/static/src/img/logo_konecranes.png" alt="Linde" data-original-title="" title="" width="170" height="170"/>
+											<h4 class="o_default_snippet_text" style="color: white;">Being the global-leading group of Lifting Business, Konecranes has been committed to provide the lifting equipment and services that increase the value and effectiveness of a business. Konecranes Lift Trucks are designed with care, craftsmanship and the latest technology, thus, boosting safety and efficiency in the workplace.</h4>
+											<h4 style="color: white;"><a href="https://www.konecranes.com/" class="btn btn-success">Learn More</a></h4><br/><br/><br/>
+										</div>
+									</div>
+									<div class="row content">
+										<div class="carousel-img col-md-4 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/konecranes_product1.png" alt="KONECRANES Product 1" data-original-title="" title=""/><br/>
+										</div>
+										<div class="carousel-img col-md-4 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/konecranes_product2.PNG" alt="KONECRANES Product 2" data-original-title="" title=""/><br/>
+										</div>
+										<div class="carousel-img col-md-4 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/konecranes_product3.png" alt="KONECRANES Product 3" data-original-title="" title=""/><br/>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- SNORKEL -->
+							<div class="item bg-alpha oe_img_bg oe_custom_bg o_bg_img_opt_custom" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(&quot;/asiaglobal_website/static/src/img/our_product_snorkel_bg.jpg&quot;); background-size: 100% auto; background-position: 20% 60%;">
+								<div class="container">
+									<div class="row content">
+										<div class="carousel-content col-md-12">
+											<br/>
+											<br/>
+											<img class="img-responsive" style="display: block; margin-left: auto; margin-right: auto;" src="/asiaglobal_website/static/src/img/logo_snorkel.jpg" alt="Linde" data-original-title="" title="" width="170" height="170"/>
+											<h4 class="o_default_snippet_text" style="color: white;">The name of Snorkel is globally known for its efforts in bringing efficient and safe working at height, from 4 meters to 40 meters. <br/>For tasks demanding work from above the ground, Snorkel makes sure that there are various aerial work platforms suitable for any application: from building maintenance to the toughest construction job site.</h4>
+											<h4 style="color: white;"><a href="https://www.snorkellifts.com/" class="btn btn-success">Learn More</a></h4><br/><br/><br/><br/>
+										</div>
+									</div>
+									<div class="row content">
+										<div class="carousel-img col-md-1 hidden-sm hidden-xs mt48">
+										</div>
+										<div class="carousel-img col-md-2 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/snorkel_product1.jpg" alt="SNORKEL Product 1" data-original-title="" title=""/><br/>
+										</div>
+										<div class="carousel-img col-md-2 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/snorkel_product2.jpg" alt="SNORKEL Product 2" data-original-title="" title=""/><br/>
+										</div>
+										<div class="carousel-img col-md-2 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/snorkel_product3.jpg" alt="SNORKEL Product 3" data-original-title="" title=""/><br/>
+										</div>
+										<div class="carousel-img col-md-2 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/snorkel_product4.jpg" alt="SNORKEL Product 3" data-original-title="" title=""/><br/>
+										</div>
+										<div class="carousel-img col-md-2 hidden-sm hidden-xs mt48">
+											<img class="img-responsive" src="/asiaglobal_website/static/src/img/snorkel_product5.jpg" alt="SNORKEL Product 3" data-original-title="" title=""/><br/>
+										</div>
+										<div class="carousel-img col-md-1 hidden-sm hidden-xs mt48">
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="carousel-control left" data-target="#myCarousel1563016267671" data-slide="prev" style="width: 10%" data-cke-saved-href="#myCarousel1563016267671">
+							<i class="fa fa-chevron-left"/>
+						</div>
+						<div class="carousel-control right" data-target="#myCarousel1563016267671" data-slide="next" style="width: 10%" data-cke-saved-href="#myCarousel1563016267671">
+							<i class="fa fa-chevron-right"/>
+						</div>
+					</div>
+
+					<!-- OTHER PRODUCTS -->
+					<section class="s_title">
+						<div class="container">
+							<div class="row">
+								<br/>
+								<br/>
+								<div class="col-md-12">
+									<h1 class="text-center">OTHER PRODUCTS<br/></h1>
+									<h3 class="text-center text-muted"></h3><br/><br/>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="s_three_columns">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-3 mt32 mb48">
+									<img class="img img-responsive" src="/asiaglobal_website/static/src/img/other_products1.PNG" alt="Industrial LED Lights"/>
+									<h3 class="mt16 o_default_snippet_text" style="color: #eb1e11;">Industrial LED Lights</h3>
+									<h4 class="o_default_snippet_text">in partnership with</h4>
+									<img class="img img-responsive" src="/asiaglobal_website/static/src/img/other_products1_partner.PNG" alt="Industrial LED Lights" width="70" height="70"/>
+									<br/>
+								</div>
+								<div class="col-md-3 mt32 mb48">
+									<img class="img img-responsive" src="/asiaglobal_website/static/src/img/other_products2.PNG" alt="Rack Protection"/>
+									<h3 class="mt16 o_default_snippet_text" style="color: #eb1e11;">Rack Protection</h3>
+									<h4 class="o_default_snippet_text">in partnership with</h4>
+									<img class="img img-responsive" src="/asiaglobal_website/static/src/img/other_products2_partner.PNG" alt="Rack Protection" width="100" height="100"/>
+									<br/>
+								</div>
+								<div class="col-md-3 mt32 mb48">
+									<img class="img img-responsive" src="/asiaglobal_website/static/src/img/other_products3.PNG" alt="Industrial Tires"/>
+									<h3 class="mt16 o_default_snippet_text" style="color: #eb1e11;">Industrial Tires</h3>
+									<h4 class="o_default_snippet_text">in partnership with</h4>
+									<img class="img img-responsive" src="/asiaglobal_website/static/src/img/other_products3_partner.png" alt="Industrial Tires" width="100" height="100"/>
+									<br/>
+								</div>
+								<div class="col-md-3 mt32 mb48">
+									<img class="img img-responsive" src="/asiaglobal_website/static/src/img/other_products4.PNG" alt="Loading Dock &amp; Cold ChainSolutions"/>
+									<h3 class="mt16 o_default_snippet_text" style="color: #eb1e11;">Loading Dock &amp; Cold Chain Solutions</h3>
+									<br/>
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<!-- OTHER SERVICES -->
+					<section class="s_title">
+						<div class="container">
+							<div class="row">
+								<br/>
+								<br/>
+								<div class="col-md-12">
+									<h1 class="text-center">OTHER SERVICES<br/></h1>
+									<h3 class="text-center text-muted"></h3><br/><br/>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="s_three_columns">
+						<div class="container">
+							<div class="row">
+								<h3 class="mt16 o_default_snippet_text" style="color: #eb1e11;">Rental Solutions</h3>
+								<h4 class="o_default_snippet_text">We offer the widest choice of Linde Material Handling Rent Solutions from stacking (IC and electric counter balance trucks), storage (reach trucks), and transporting (hand pallet, pedestrian, and ride-on pallet trucks) with capacities from 2 to 8 tons.</h4>
+								<div class="col-md-3 mt32 mb48">
+									<img class="img img-responsive" src="/asiaglobal_website/static/src/img/other_services1.PNG" alt="Rental Solution 1" />
+									<br/>
+								</div>
+								<div class="col-md-3 mt32 mb48">
+									<img class="img img-responsive" src="/asiaglobal_website/static/src/img/other_services2.PNG" alt="Rental Solution 2" />
+									<br/>
+								</div>
+								<div class="col-md-3 mt32 mb48">
+									<img class="img img-responsive" src="/asiaglobal_website/static/src/img/other_services3.PNG" alt="Rental Solution 3" />
+									<br/>
+								</div>
+								<div class="col-md-3 mt32 mb48">
+									<img class="img img-responsive" src="/asiaglobal_website/static/src/img/other_services4.PNG" alt="Rental Solution 4" />
+									<br/>
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<!-- SOME OF OUR CUSTOMERS -->
+					<!-- <section class="s_title">
+						<div class="container">
+							<div class="row">
+								<br/>
+								<br/>
+								<div class="col-md-12">
+									<h1 class="text-center">SOME OF OUR CUSTOMERS<br/></h1>
+									<h3 class="text-center text-muted"></h3><br/><br/>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="s_references bg-gray-lighter">
+					<div class="container">
+					  <div class="row">
+						<div class="col-md-2 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_ajinomoto.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Ajinomoto" width="200" height="200"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_ati.jpg" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - ATI" width="200" height="200"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_2go.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - 2Go" width="200" height="200"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_unilab.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Unilab" width="100" height="100"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_dhl.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - DHL" width="200" height="200"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_schenker.png" class="img img-responsive" alt="Customer - Schenker" width="200" height="200" />
+						</div>
+					  </div>
+					  <div class="row">
+						<div class="col-md-2 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_sanmiguel.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - San Miguel" width="100" height="100"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_rfm.gif" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - RFM" width="200" height="200"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_megawide.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Megawide" width="200" height="200"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_starbucks.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Starbucks" width="100" height="100"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_pepsi.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Pepsi" width="200" height="200"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_samsungsds.png" class="img img-responsive" alt="Customer - Samsung SDS" width="200" height="200" />
+						</div>
+					  </div>
+					  <div class="row">
+						<div class="col-md-2 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_metrodrug.jpg" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Metro Drug Inc" width="200" height="200"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_ceva.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - CEVA" width="200" height="200"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_fastservices.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Fast Services" width="200" height="200"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_cocacola.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Coca Cola" width="200" height="200"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_oceanic.png" class="img img-responsive" alt="Customer - Oceanic" width="200" height="200" />
+						</div>
+						<div class="col-md-2 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_unifrutti.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Unifrutti" width="100" height="100"/>
+						</div>
+					  </div>
+					  <div class="row">
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_teamenergy.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Team Energy" width="200" height="200"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_711.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - 711" width="200" height="200"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_delmonte.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Del Monte" width="150" height="150"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_universalrobina.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Universal Robina" width="200" height="200"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_mekeni.png" class="img img-responsive" alt="Customer - Mekeni" width="200" height="200" />
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_frabelle.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Frabelle" width="200" height="200"/>
+						</div>
+					  </div>
+					  <div class="row">
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_sm.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - SM" width="100" height="100"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_igloo.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Igloo" width="200" height="200"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_kerry.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Kerry" width="200" height="200"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_manilanorthport.png" class="img img-responsive" alt="Customer - Manila North Port" width="100" height="100" />
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_republicaboitiz.svg" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Republic Aboitiz" width="200" height="200"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_holcim.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Holcim" width="200" height="200"/>
+						</div>
+					  </div>
+					  <div class="row">
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_lafarge.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Lafarge" width="100" height="100"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_air21.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Air 21" width="200" height="200"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_pg.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - PG" width="200" height="200"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_amherst.jpg" class="img img-responsive" alt="Customer - Amherst" width="100" height="100" />
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_liteferries.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Lite Ferries" width="200" height="200"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_cokaliong.jpg" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Cokaliong" width="200" height="200"/>
+						</div>
+					  </div>
+					  <div class="row">
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_roro.jpg" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Roro" width="300" height="300"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_moreta.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Moreta" width="300" height="300"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_catsmotors.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Cats Motors" width="200" height="200"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_pilmico.png" class="img img-responsive" alt="Customer - Pilmico" width="100" height="100" />
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_lamsan.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - Lamsan" width="100" height="100"/>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 mt16 mb16">
+						  <img src="/asiaglobal_website/static/src/img/our_customer_psacc.png" class="img img-responsive" style="display: block; margin-top: auto; margin-bottom: auto;" alt="Customer - PSACC" width="100" height="100"/>
+						</div>
+					  </div>
+
+					</div>
+				  </section> -->
+
+				  <!-- OUR OFFICES -->
+					<section class="s_title">
+						<div class="container">
+							<div class="row">
+								<br/>
+								<br/>
+								<div class="col-md-12">
+									<h1 class="text-center">OUR OFFICES<br/></h1>
+									<h3 class="text-center text-muted"></h3><br/><br/>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="s_text_image oe_img_bg" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(&quot;/asiaglobal_website/static/src/img/our_office_map_bg.png&quot;); background-size: 100% auto; background-position: 20% 60%;">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-6 col-md-offset-1 mt64 mb32" style="background-color: #eb1e11;">
+									<h3 style="text-align: center; color: white;" class="o_default_snippet_text">Luzon Office</h3>
+									<h4 style="text-align: center; color: white;" class="o_default_snippet_text">
+										AGT Building
+										B2A Granville Industrial Complex
+										Governor's Drive, Barangay Bancal,
+										Carmona, Cavite 4116
+									</h4>
+									<h4 style="text-align: center; color: white;" class="o_default_snippet_text">
+										Tel: +63 (02) 8991801; +63 (46) 4131408; +63 (46) 4130858 <br/><br/>
+										Service Hotline: +63 (02) 8991802
+									</h4>
+									<br/>
+								</div>
+								<div class="col-md-5 mt32 mb32">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 col-md-offset-1 mt64 mb32" style="background-color: #eb1e11;">
+									<h3 style="text-align: center; color: white;" class="o_default_snippet_text">Visayas Office</h3>
+									<h4 style="text-align: center; color: white;" class="o_default_snippet_text">
+										Door 3 Salome's Pension Bldg.,
+										A. C. Cortez Avenue, Bgy. Ibabao
+										Mandaue City, Cebu 6014
+									</h4>
+									<h4 style="text-align: center; color: white;" class="o_default_snippet_text">
+										Tel: +63 (32) 3830215
+									</h4>
+									<br/>
+								</div>
+								<div class="col-md-5 mt32 mb32">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 col-md-offset-1 mt64 mb32" style="background-color: #eb1e11;">
+									<h3 style="text-align: center; color: white;" class="o_default_snippet_text">Mindanao Office</h3>
+									<h4 style="text-align: center; color: white;" class="o_default_snippet_text">
+										AGT Building, Km 8 C.P. Garcia Highway, <br/>
+										Buhangin, Davao City, 8000
+									</h4>
+									<h4 style="text-align: center; color: white;" class="o_default_snippet_text">
+										Tel: +63 (82) 234 4669
+									</h4>
+									<br/>
+								</div>
+								<div class="col-md-5 mt32 mb32">
+								</div>
+							</div>
+						</div>
+					</section>
+
+				</div>
+
+			</xpath>
+		</template>
+	</data>
+</odoo>
