@@ -11,13 +11,13 @@
 
 
                     <!-- CHARGED TO -->
-                    <div style="top: 65mm;left: 50mm;position:absolute;width:100%;">
+                    <div style="top: 63mm;left: 50mm;position:absolute;width:100%;">
                         <p style="width:400px; height:50px;"><span t-field="o.partner_id.name"/></p>
                     </div>
-                    <div style="top: 79mm;left: 35mm;position:absolute;width:100%;font-size:21px;">
+                    <div style="top: 77mm;left: 35mm;position:absolute;width:100%;font-size:21px;">
                         <p style="width:425px; height:50px;"><span t-field="o.partner_id.street"/> <span t-field="o.partner_id.street2"/> <span t-field="o.partner_id.city"/></p>
                     </div>
-                    <div style="top: 93mm;left: 38mm;position:absolute;width:100%;font-size:21px;">
+                    <div style="top: 92mm;left: 38mm;position:absolute;width:100%;font-size:21px;">
                         <span t-field="o.partner_id.vat"/><br/>
                     </div>
                     <div style="top: 100mm;left: 51mm;position:absolute;width:100%;font-size:21px;">
@@ -25,21 +25,21 @@
                     </div>
 
                     <!-- SHIP TO -->
-                    <div style="top: 65mm;left: 160mm;position:absolute;width:100%;">
+                    <div style="top: 63mm;left: 160mm;position:absolute;width:100%;">
                         <p style="width:400px; height:50px;"><span t-field="o.partner_id.name"/></p>
                     </div>
-                    <div style="top: 79mm;left: 160mm;position:absolute;width:100%;font-size:21px;">
+                    <div style="top: 77mm;left: 160mm;position:absolute;width:100%;font-size:21px;">
                         <p style="width:400px; height:50px;"><span t-field="o.partner_shipping_id.street"/> <span t-field="o.partner_shipping_id.street2"/> <span t-field="o.partner_shipping_id.city"/></p>
                     </div>
 
                     <!-- BILL TO -->
-                    <div style="top: 65mm;left: 270mm;position:absolute;width:100%;">
+                    <div style="top: 63mm;left: 270mm;position:absolute;width:100%;">
                         <p style="width:425px; height:50px;"><span t-field="o.partner_id.name"/></p>
                     </div>
-                    <div style="top: 79mm;left: 270mm;position:absolute;width:100%;font-size:21px;">
+                    <div style="top: 77mm;left: 270mm;position:absolute;width:100%;font-size:21px;">
                         <p style="width:425px; height:50px;"><span t-field="o.partner_id.street"/> <span t-field="o.partner_id.street2"/> <span t-field="o.partner_id.city"/></p>
                     </div>
-                    <div style="top: 93mm;left: 270mm;position:absolute;width:100%;font-size:21px;">
+                    <div style="top: 92mm;left: 270mm;position:absolute;width:100%;font-size:21px;">
                         <span t-field="o.partner_id.vat"/><br/>
                         <p style="width:425px; height:50px;"><span t-field="o.bus_style"/></p>
                     </div>
