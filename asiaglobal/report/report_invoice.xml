@@ -6,7 +6,7 @@
             <t t-call="asiaglobal.external_layout_agt_account_invoice">
                 <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})" />
                 <!-- <div class="page" t-attf-style="background-image:url('/asiaglobal/static/src/img/bill.PNG');  no-repeat; background-size: cover;"> -->
-                <div class="page" style="font-size:22px">
+                <div class="page" style="font-size:23px">
                     <span t-field="o.date_invoice" style="top: 42mm;left: 330mm;position:absolute;width:100%;"/>
 
 
@@ -14,21 +14,21 @@
                     <div style="top: 65mm;left: 50mm;position:absolute;width:100%;">
                         <p style="width:400px; height:50px;"><span t-field="o.partner_id.name"/></p>
                     </div>
-                    <div style="top: 79mm;left: 35mm;position:absolute;width:100%;font-size:20px;">
+                    <div style="top: 79mm;left: 35mm;position:absolute;width:100%;font-size:21px;">
                         <p style="width:425px; height:50px;"><span t-field="o.partner_id.street"/> <span t-field="o.partner_id.street2"/> <span t-field="o.partner_id.city"/></p>
                     </div>
-                    <div style="top: 93mm;left: 38mm;position:absolute;width:100%;font-size:20px;">
+                    <div style="top: 93mm;left: 38mm;position:absolute;width:100%;font-size:21px;">
                         <span t-field="o.partner_id.vat"/><br/>
                     </div>
-                    <div style="top: 100mm;left: 51mm;position:absolute;width:100%;font-size:20px;">
-                        <p style="width:425px; height:50px;font-size:20px;"><span t-field="o.bus_style"/></p>
+                    <div style="top: 100mm;left: 51mm;position:absolute;width:100%;font-size:21px;">
+                        <p style="width:425px; height:50px;font-size:21px;"><span t-field="o.bus_style"/></p>
                     </div>
 
                     <!-- SHIP TO -->
                     <div style="top: 65mm;left: 160mm;position:absolute;width:100%;">
                         <p style="width:400px; height:50px;"><span t-field="o.partner_id.name"/></p>
                     </div>
-                    <div style="top: 79mm;left: 160mm;position:absolute;width:100%;font-size:20px;">
+                    <div style="top: 79mm;left: 160mm;position:absolute;width:100%;font-size:21px;">
                         <p style="width:400px; height:50px;"><span t-field="o.partner_shipping_id.street"/> <span t-field="o.partner_shipping_id.street2"/> <span t-field="o.partner_shipping_id.city"/></p>
                     </div>
 
@@ -36,10 +36,10 @@
                     <div style="top: 65mm;left: 270mm;position:absolute;width:100%;">
                         <p style="width:425px; height:50px;"><span t-field="o.partner_id.name"/></p>
                     </div>
-                    <div style="top: 79mm;left: 270mm;position:absolute;width:100%;font-size:20px;">
+                    <div style="top: 79mm;left: 270mm;position:absolute;width:100%;font-size:21px;">
                         <p style="width:425px; height:50px;"><span t-field="o.partner_id.street"/> <span t-field="o.partner_id.street2"/> <span t-field="o.partner_id.city"/></p>
                     </div>
-                    <div style="top: 93mm;left: 270mm;position:absolute;width:100%;font-size:20px;">
+                    <div style="top: 93mm;left: 270mm;position:absolute;width:100%;font-size:21px;">
                         <span t-field="o.partner_id.vat"/><br/>
                         <p style="width:425px; height:50px;"><span t-field="o.bus_style"/></p>
                     </div>
@@ -211,20 +211,20 @@
             <t t-call="asiaglobal.external_layout_agt_account_invoice">
                 <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})" />
                 <!-- <div class="page" t-attf-style="background-image:url('/asiaglobal/static/src/img/bill.PNG');  no-repeat; background-size: cover;"> -->
-                <div class="page" style="font-size:22px">
+                <div class="page" style="font-size:23px">
                     <span t-field="o.date_invoice" style="top: 42mm;left: 330mm;position:absolute;width:100%;"/>
                     
                     <!-- CHARGED TO -->
                     <div style="top: 60mm;left: 50mm;position:absolute;width:100%;">
                         <p style="width:400px; height:50px;"><span t-field="o.partner_id.name"/></p><br/>
                     </div>
-                    <div style="top: 74mm;left: 42mm;position:absolute;width:100%;font-size:20px;">
+                    <div style="top: 74mm;left: 42mm;position:absolute;width:100%;font-size:21px;">
                         <p style="width:425px; height:50px;"><span t-field="o.partner_id.street"/> <span t-field="o.partner_id.street2"/> <span t-field="o.partner_id.city"/></p><br/>
                     </div>
-                    <div style="top: 88mm;left: 37mm;position:absolute;width:100%;font-size:20px;">
+                    <div style="top: 88mm;left: 37mm;position:absolute;width:100%;font-size:21px;">
                         <span t-field="o.partner_id.vat"/><br/>
                     </div>
-                    <div style="top: 95mm;left: 50mm;position:absolute;width:100%;font-size:20px;">
+                    <div style="top: 95mm;left: 50mm;position:absolute;width:100%;font-size:21px;">
                         <p style="width:425px; height:50px;"><span t-field="o.bus_style"/></p>
                     </div>
 
@@ -232,7 +232,7 @@
                     <div style="top: 60mm;left: 160mm;position:absolute;width:100%;">
                         <p style="width:400px; height:50px;"><span t-field="o.partner_id.name"/></p><br/>
                     </div>
-                    <div style="top: 74mm;left: 160mm;position:absolute;width:100%;font-size:20px;">
+                    <div style="top: 74mm;left: 160mm;position:absolute;width:100%;font-size:21px;">
                         <p style="width:400px; height:50px;"><span t-field="o.partner_shipping_id.street"/> <span t-field="o.partner_shipping_id.street2"/> <span t-field="o.partner_shipping_id.city"/></p>
                     </div>
 
@@ -240,12 +240,12 @@
                     <div style="top: 60mm;left: 270mm;position:absolute;width:100%;">
                         <p style="width:425px; height:50px;"><span t-field="o.partner_id.name"/></p><br/>
                     </div>
-                    <div style="top: 74mm;left: 270mm;position:absolute;width:100%;font-size:20px;">
+                    <div style="top: 74mm;left: 270mm;position:absolute;width:100%;font-size:21px;">
                         <p style="width:425px; height:50px;"><span t-field="o.partner_id.street"/> <span t-field="o.partner_id.street2"/> <span t-field="o.partner_id.city"/></p>
                     </div>
-                    <div style="top: 88mm;left: 270mm;position:absolute;width:100%;font-size:20px;">
+                    <div style="top: 88mm;left: 270mm;position:absolute;width:100%;font-size:21px;">
                         <span t-field="o.partner_id.vat"/><br/>
-                        <p style="width:425px; height:50px;font-size:20px;"><span t-field="o.bus_style"/></p>
+                        <p style="width:425px; height:50px;font-size:21px;"><span t-field="o.bus_style"/></p>
                     </div>
 
                     <div style="top: 126mm;left: 47mm;position:absolute;width:400px;text-center">
