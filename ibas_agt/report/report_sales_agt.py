@@ -58,6 +58,12 @@ class SalesXlsx(models.AbstractModel):
                 sheet.write(iterator, 10, mysline.price_subtotal)
                 sheet.write(iterator, 11, mysline.total_cost)
                 sheet.write(iterator, 12, mysline.gross_margin)
+            else:
+                # sheet.write(iterator, 8, mysline.qty_delivered)
+                sheet.write(iterator, 9, obj.quantity)
+                sheet.write(iterator, 10, obj.price_subtotal)
+                # sheet.write(iterator, 11, mysline.total_cost)
+                # sheet.write(iterator, 12, mysline.gross_margin)
 
             sheet.write(iterator, 13, obj.invoice_id.partner_id.name)
             sheet.write(iterator, 14, obj.invoice_id.date_due)
