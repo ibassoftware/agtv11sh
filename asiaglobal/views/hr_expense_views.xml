@@ -22,7 +22,7 @@
                     <attribute name="attrs">{'readonly':[('state','in',['approve','done','post'])]}</attribute>
                 </xpath>
 
-               <!-- <xpath expr="//notebook" position="inside">
+               <xpath expr="//notebook" position="inside">
                     <page string="Payments">
                         <group>
                         <field name="account_move_id"/>
@@ -30,7 +30,7 @@
                         <field name="memo"/>
                         </group>
                     </page>
-                </xpath> -->
+                </xpath>
                 
             </field>
         </record>
