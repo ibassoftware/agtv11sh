@@ -25,7 +25,6 @@
                <xpath expr="//notebook" position="inside">
                     <page string="Payments">
                         <group>
-                        <field name="account_move_id"/>
                         <field name="payment_date"/>
                         <field name="memo"/>
                         </group>
