@@ -9,6 +9,14 @@
             <xpath expr="//field[@name='partner_id']" position="after">
                 <field name="customer_id"/>
             </xpath>
+
+            <xpath expr="//field[@name='currency_id']" position="after">
+                <field name="order_status"/>
+                <field name="remarks_status"/>
+                <field name="order_store" invisible="1"/>
+                <field name="remarks_store" invisible="1"/>
+            </xpath>
+           
         </field>
     </record>
 </data>
