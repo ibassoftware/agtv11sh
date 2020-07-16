@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="invoice_excel_view" model="ir.ui.view">
+        <field name="name">invoice.wizard.reports</field>
+        <field name="model">invoice.wizard.reports</field>
+        <field name="arch" type="xml">
+            <form string="Export Invoice">
+            <p class="oe_grey">
+            You want to Print Invoice Excel Report?
+            </p>			  
+                <footer>
+                    <button string="Print Excel Report" class="btn-primary" name="generate_excel_report" type="object" />
+                    <button string="Cancel" class="btn-primary" special="cancel"/>
+                </footer>
+            </form>						
+        </field>
+    </record>
+
+
+	<record id="invoice_excel_views" model="ir.ui.view">
+		<field name="name">invoice.report.out</field>
+		<field name="model">invoice.report.out</field>
+		<field name="arch" type="xml">
+			<form string="Export Invoice">
+				<group>
+					<field name="excel_file" filename="file_name"/>
+					<field name="file_name" invisible="1"/>
+				
+				</group>
+				<footer>
+					<button string="Cancel" class="btn-primary" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>	
+		
+
+    <act_window id="action_invoice_excel" key2="client_action_multi"
+        name="Invoice Excel Report " res_model="invoice.wizard.reports" src_model="account.invoice"
+        view_mode="form" target="new" />
+
+</odoo>
