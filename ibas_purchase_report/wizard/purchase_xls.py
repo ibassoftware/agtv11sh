@@ -27,10 +27,10 @@ class PurchaseWizard(models.Model):
         worksheet.col(3).width = 3000
         worksheet.col(4).width = 5000
         worksheet.col(5).width = 5000
-        worksheet.col(6).width = 3000
-        worksheet.col(7).width = 6000
-        worksheet.col(9).width = 6000
-        worksheet.col(10).width = 8000
+        worksheet.col(6).width = 4000
+        worksheet.col(7).width = 4000
+        worksheet.col(9).width = 4000
+        worksheet.col(10).width = 4000
 
         worksheet.write(0, 2, 'Name', style_header)
         worksheet.write(0, 3, 'PO No.', style_header)
@@ -49,6 +49,7 @@ class PurchaseWizard(models.Model):
             custom_order['partner_id'] = order.partner_id.name
             custom_order['po_no'] = order.name
             custom_order['date_order'] = order.date_order
+            custom_order['payment_term_id'] = order.payment_term_id.name
             custom_order['amount_total'] = order.amount_total
             custom_order['currency_id'] = order.currency_id.name
             custom_order['order_store'] = order.order_store
@@ -58,10 +59,13 @@ class PurchaseWizard(models.Model):
             worksheet.write(n, 2, custom_order['partner_id'], style)
             worksheet.write(n, 3, custom_order['po_no'], style)
             worksheet.write(n, 4, custom_order['date_order'], style)
+            worksheet.write(n, 5, custom_order['payment_term_id'], style)
             worksheet.write(n, 6, custom_order['amount_total'], style)
+            worksheet.write(n, 7, custom_order['amount_total'], style)
             worksheet.write(n, 8, custom_order['currency_id'], style)
-            worksheet.write(n, 9, custom_order['order_store'], style)
-            worksheet.write(n, 10, custom_order['remarks_store'], style)
+            worksheet.write(n, 9, custom_order['order_store'].upper(), style)
+            worksheet.write(
+                n, 10, custom_order['remarks_store'].upper(), style)
 
             n += 1
             i += 1
