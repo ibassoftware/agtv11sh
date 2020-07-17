@@ -3,6 +3,7 @@
 import logging
 
 from odoo import _, api, fields, models
+from datetime import datetime
 
 _logger = logging.getLogger(__name__)
 
@@ -16,9 +17,22 @@ class Invoice(models.Model):
     last_date_paid = fields.Date(
         string='Last Date Paid', compute='_compute_last_date_paid')
 
+    last_delivery_date = fields.Date(
+        string='Last Delivery Date', compute='_compute_last_delivery_date')
+
+    @api.depends('invoice_line_ids')
+    def _compute_last_delivery_date(self):
+        for record in self:
+            for line in record['invoice_line_ids']:
+                dates = []
+                if line.delivery_date:
+                    dates.append(line.delivery_date)
+                    record['last_delivery_date'] = max(dates)
+                else:
+                    record['last_delivery_date'] = False
+
     @api.depends('residual')
     def _compute_total_paid(self):
-
         for rec in self:
             amount = 0
             payment_ids = self.env['account.payment'].sudo().search(

@@ -38,6 +38,19 @@
 
     <act_window id="action_invoice_excel" key2="client_action_multi"
         name="Invoice Excel Report " res_model="invoice.wizard.reports" src_model="account.invoice"
-        view_mode="form" target="new" />
+        view_mode="form" target="new" /> 
+
+   <!-- <act_window id="invoice_report_ibas_view_form_action"
+            name="Invoice Report"
+            res_model="invoice.wizard.reports"
+            view_mode="form"
+            target="new"/>
+    
+    <menuitem
+        id="invoice_wizard_menu"
+        name="Invoice Report"
+        action="invoice_report_ibas_view_form_action"
+        parent="account.menu_finance_reports"
+        sequence="20"/>-->
 
 </odoo>

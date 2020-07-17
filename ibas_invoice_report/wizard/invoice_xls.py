@@ -62,11 +62,13 @@ class InvoiceWizard(models.Model):
                 product['name'] = line.name
                 product['product_id'] = line.product_id.name
                 product['quantity'] = line.quantity
+                product['price_subtotal'] = line.price_subtotal
                 invoices.append(product)
 
             custom_value['invoices'] = invoices
             custom_value['user_id'] = rec.user_id.name
             custom_value['date_invoice'] = rec.date_invoice
+            custom_value['last_delivery_date'] = rec.last_delivery_date
             custom_value['last_date_paid'] = rec.last_date_paid
             custom_value['date_due'] = rec.date_due
             custom_value['move_name'] = rec.move_name
@@ -79,6 +81,8 @@ class InvoiceWizard(models.Model):
                 worksheet.write(n, 2, custom_value['user_id'], style)
                 worksheet.write(n, 3, product['account_analytic_id'], style)
                 worksheet.write(n, 4, custom_value['date_invoice'], style)
+                worksheet.write(
+                    n, 5, custom_value['last_delivery_date'], style)
                 worksheet.write(n, 6, custom_value['last_date_paid'], style)
                 worksheet.write(n, 7, custom_value['date_due'], style)
                 worksheet.write(n, 8, custom_value['move_name'], style)
@@ -86,7 +90,7 @@ class InvoiceWizard(models.Model):
                 worksheet.write(n, 10, product['name'], style)
                 worksheet.write(n, 11, product['product_id'], style)
                 worksheet.write(n, 12, product['quantity'], style)
-                worksheet.write(n, 13, custom_value['amount_total'], style)
+                worksheet.write(n, 13, product['price_subtotal'], style)
                 worksheet.write(
                     n, 14, custom_value['total_amount_paid'], style)
 
