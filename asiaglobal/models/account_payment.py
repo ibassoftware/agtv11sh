@@ -25,10 +25,16 @@ class AccountPayment(models.Model):
 			rec.amount_in_words = whole.upper() + " ONLY"
 			rec.check_amount_in_words = whole.upper() + " ONLY"
 
-	# @api.model
-	# def compute_check_amount_in_words(self):
-	# 	for record in self.search([]):
-	# 		if not record.check_amount_in_words:
-	# 			check_amount_in_words = record.currency_id.amount_to_text(record.amount)
-	# 			record.check_amount_in_words = check_amount_in_words
+	@api.multi
+	def compute_check_amount_in_words(self):
+		for record in self:
+			if not record.check_amount_in_words or not record.amount_in_words:
+				# check_amount_in_words = record.currency_id.amount_to_text(record.amount)
+				# record.check_amount_in_words = check_amount_in_words
+				record._onchange_amount()
 
+		return True
+
+	# Override to remove asterisk
+	def fill_line(self, amount_str):
+		return amount_str
