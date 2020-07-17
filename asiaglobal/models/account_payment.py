@@ -9,8 +9,8 @@ class AccountPayment(models.Model):
 
 	amount_in_words = fields.Char(string='Amount In words', compute='_onchange_amount', store=True)
 
-	@api.depends('amount')
 	@api.multi
+	@api.onchange('amount')
 	def _onchange_amount(self):
 		for rec in self:
 			whole = num2words(int(rec.amount)) + ' Pesos '
