@@ -30,7 +30,7 @@ class PurchaseWizard(models.Model):
         else:
 
             orders = self.env['purchase.order'].search([
-                ('order_status', '>=', state),
+                ('order_store', '=', state),
                 ('date_order', '>=', date_start),
                 ('date_order', '<=', date_end)
             ])

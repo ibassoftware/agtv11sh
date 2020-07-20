@@ -34,14 +34,34 @@ class IBASPO(models.Model):
                     if line.qty_received == 0:
                         rec.order_status = 'open'
 
-            for pick in stock_pick:
-                if pick.backorder_id:
-                    rec.order_status = 'partial'
+            if stock_pick:
+                for pick in stock_pick:
+                    if pick.state == 'done':
+                        for line in rec.order_line:
+                            if line.product_qty != line.qty_received:
+                                rec.order_status = 'partial'
 
             if rec.order_line:
+                prod_qty = 0
+                qty_received = 0
                 for line in rec.order_line:
-                    if line.product_qty == line.qty_received:
-                        rec.order_status = 'close'
+                    if line.qty_received >= 1:
+                        prod_qty += line.product_qty
+                        qty_received += line.qty_received
+
+                if prod_qty == qty_received and line.qty_received >= 1:
+                    rec.order_status = 'close'
+
+    @api.depends('invoice_line_ids')
+    def _compute_last_delivery_date(self):
+        for record in self:
+            for line in record['invoice_line_ids']:
+                dates = []
+                if line.delivery_date:
+                    dates.append(line.delivery_date)
+                    record['last_delivery_date'] = max(dates)
+                else:
+                    record['last_delivery_date'] = False
 
     @api.depends('date_planned')
     def _compute_remarks_status(self):
