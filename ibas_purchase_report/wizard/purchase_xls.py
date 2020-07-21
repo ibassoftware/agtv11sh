@@ -72,6 +72,7 @@ class PurchaseWizard(models.Model):
                 custom_order['po_no'] = order.name
                 custom_order['date_order'] = order.date_order
                 custom_order['date_planned'] = order.date_planned
+                custom_order['date_due'] = order.date_due
                 custom_order['amount_total'] = order.amount_total
                 custom_order['currency_id'] = order.currency_id.name
                 custom_order['order_store'] = order.order_store
@@ -81,7 +82,7 @@ class PurchaseWizard(models.Model):
                 worksheet.write(n, 2, custom_order['partner_id'], style)
                 worksheet.write(n, 3, custom_order['po_no'], style)
                 worksheet.write(n, 4, custom_order['date_order'], style)
-                worksheet.write(n, 5, custom_order['date_planned'], style)
+                worksheet.write(n, 5, custom_order['date_due'], style)
                 worksheet.write(n, 6, custom_order['amount_total'], style)
                 worksheet.write(n, 7, custom_order['amount_total'], style)
                 worksheet.write(n, 8, custom_order['currency_id'], style)
