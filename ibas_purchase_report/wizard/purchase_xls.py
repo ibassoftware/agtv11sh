@@ -68,8 +68,6 @@ class PurchaseWizard(models.Model):
             i = 1
             custom_order = {}
             for order in orders:
-
-                custom_order['invoices'] = invoices
                 custom_order['partner_id'] = order.partner_id.name
                 custom_order['po_no'] = order.name
                 custom_order['date_order'] = order.date_order
@@ -80,6 +78,11 @@ class PurchaseWizard(models.Model):
                 custom_order['currency_id'] = order.currency_id.name
                 custom_order['order_store'] = order.order_store
                 custom_order['remarks_store'] = order.remarks_store
+
+                if order.date_due == False:
+                    custom_order['date_due'] = " "
+                else:
+                    custom_order['date_due'] = order.date_due
 
                 worksheet.write(n, 1, i, style)
                 worksheet.write(n, 2, custom_order['partner_id'], style)
