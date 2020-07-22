@@ -68,12 +68,14 @@ class PurchaseWizard(models.Model):
             i = 1
             custom_order = {}
             for order in orders:
+
+                custom_order['invoices'] = invoices
                 custom_order['partner_id'] = order.partner_id.name
                 custom_order['po_no'] = order.name
                 custom_order['date_order'] = order.date_order
                 custom_order['date_planned'] = order.date_planned
                 custom_order['date_due'] = order.date_due
-                custom_order['debit'] = order.invoice_ids[0].total_analytic_acc_debit
+                custom_order['debit'] = order.invoice_ids.total_analytic_acc_debit
                 custom_order['amount_total'] = order.amount_total
                 custom_order['currency_id'] = order.currency_id.name
                 custom_order['order_store'] = order.order_store

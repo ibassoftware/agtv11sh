@@ -35,6 +35,9 @@ class Invoice(models.Model):
                         debit = 0
                 rec.total_analytic_acc_debit = debit
 
+            else:
+                rec.total_analytic_acc_debit = 0
+
     @api.depends('invoice_line_ids')
     def _compute_last_delivery_date(self):
         for record in self:
