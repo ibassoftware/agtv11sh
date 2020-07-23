@@ -23,15 +23,28 @@ class IBASPO(models.Model):
     remarks_store = fields.Selection(
         related='remarks_status', string='Remarks Store', store="True")
 
-    date_due = fields.Date(string='Due Date', compute='_compute_date_due')
+    date_due = fields.Date(string='Due Date')
 
-    @api.depends('invoice_ids')
-    def _compute_date_due(self):
-        for rec in self:
-            if rec.invoice_ids:
-                rec.date_due = rec.invoice_ids[0].date_due
-            else:
-                rec.date_due = False
+    @api.onchange('payment_term_id', 'date_order')
+    def _onchange_payment_term_date(self):
+        date_order = self.date_order
+        if not date_order:
+            date_order = fields.Date.context_today(self)
+        if self.payment_term_id:
+            pterm = self.payment_term_id
+            pterm_list = pterm.with_context(currency_id=self.company_id.currency_id.id).compute(
+                value=1, date_ref=date_order)[0]
+            self.date_due = max(line[0] for line in pterm_list)
+        elif self.date_due and (date_order > self.date_due):
+            self.date_due = date_order
+
+    # @api.depends('invoice_ids')
+    # def _compute_date_due(self):
+    #    for rec in self:
+    #        if rec.invoice_ids:
+    #            rec.date_due = rec.invoice_ids[0].date_due
+    #        else:
+    #            rec.date_due = False
 
     @api.depends('order_line.qty_received')
     def _compute_order_status(self):

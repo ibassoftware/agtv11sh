@@ -45,8 +45,8 @@ class PurchaseWizard(models.Model):
             style_header = xlwt.easyxf(
                 'font: bold True, name Arial; borders: bottom_color black, bottom medium; align: horiz center')
             worksheet.col(1).width = 1000
-            worksheet.col(2).width = 8000
-            worksheet.col(3).width = 3000
+            worksheet.col(2).width = 10000
+            worksheet.col(3).width = 5000
             worksheet.col(4).width = 5000
             worksheet.col(5).width = 5000
             worksheet.col(6).width = 3000
@@ -72,8 +72,8 @@ class PurchaseWizard(models.Model):
                 custom_order['po_no'] = order.name
                 custom_order['date_order'] = order.date_order
                 custom_order['date_planned'] = order.date_planned
-                custom_order['date_due'] = order.date_due
-                custom_order['debit'] = order.invoice_ids.total_analytic_acc_debit
+                #custom_order['date_due'] = order.date_due
+                #custom_order['debit'] = order.invoice_ids.total_analytic_acc_debit
                 custom_order['amount_total'] = order.amount_total
                 custom_order['currency_id'] = order.currency_id.name
                 custom_order['order_store'] = order.order_store
@@ -83,6 +83,11 @@ class PurchaseWizard(models.Model):
                     custom_order['date_due'] = " "
                 else:
                     custom_order['date_due'] = order.date_due
+
+                if order.currency_id.id == 37:
+                    custom_order['debit'] = order.amount_total
+                else:
+                    custom_order['debit'] = order.invoice_ids.total_analytic_acc_debit
 
                 worksheet.write(n, 1, i, style)
                 worksheet.write(n, 2, custom_order['partner_id'], style)
