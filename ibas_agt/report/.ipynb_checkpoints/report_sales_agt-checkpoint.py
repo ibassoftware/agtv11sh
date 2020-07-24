@@ -109,9 +109,9 @@ class SalesXlsx(models.AbstractModel):
             cost_amount = 0
             if move_lines:
                 for move in move_lines:
-                    if move.product_id and move.account_id.code in sales_account:
+                    if move.product_id == obj.product_id  and move.account_id.code in sales_account:
                         sales_amount += move.credit
-                    if move.product_id and move.account_id.code in cost_account:
+                    if move.product_id == obj.product_id and move.account_id.code in cost_account:
                         cost_amount += move.debit
             sheet.write(iterator, 10, sales_amount)
             sheet.write(iterator, 11, cost_amount)
