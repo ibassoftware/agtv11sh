@@ -18,7 +18,7 @@
     'depends': ['purchase'],
     # 'images': ['static/description/banner.jpg'],
     'data': [
-        # 'wizard/print_purchase_order_summary_view.xml',
+        'security/ir.model.access.csv',
         'wizard/purchase_xls_wiz.xml',
         # 'report/order_summary_report_view.xml',
         # 'report/report_menu.xml',
