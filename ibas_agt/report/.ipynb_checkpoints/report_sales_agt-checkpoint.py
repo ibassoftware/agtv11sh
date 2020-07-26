@@ -116,7 +116,6 @@ class SalesXlsx(models.AbstractModel):
                             cost_amount += move.debit
                         else:
                             sales_amount += move.credit
-                            sales_amount += move.debit
                             
             sheet.write(iterator, 10, sales_amount)
             sheet.write(iterator, 11, cost_amount)
