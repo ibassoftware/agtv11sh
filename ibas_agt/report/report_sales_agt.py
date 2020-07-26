@@ -109,10 +109,15 @@ class SalesXlsx(models.AbstractModel):
             cost_amount = 0
             if move_lines:
                 for move in move_lines:
-                    if move.product_id == obj.product_id  and move.account_id.code in sales_account:
-                        sales_amount += move.credit
-                    if move.product_id == obj.product_id and move.account_id.code in cost_account:
-                        cost_amount += move.debit
+                    if move.product_id == obj.product_id:
+                        if move.account_id.code in sales_account:
+                            sales_amount += move.credit
+                        elif move.account_id.code in cost_account:
+                            cost_amount += move.debit
+                        else:
+                            sales_amount += move.credit
+                            sales_amount += move.debit
+                            
             sheet.write(iterator, 10, sales_amount)
             sheet.write(iterator, 11, cost_amount)
             
@@ -122,7 +127,7 @@ class SalesXlsx(models.AbstractModel):
 
             sheet.write(iterator, 13, obj.invoice_id.last_date_paid or '')
             sheet.write(iterator, 14, obj.invoice_id.total_amount_paid)
-            sheet.write(iterator, 15, obj.invoice_id.amount_total)
+            sheet.write(iterator, 15, obj.invoice_id.amount_total_company_signed)
             
             iterator = iterator + 1
         
