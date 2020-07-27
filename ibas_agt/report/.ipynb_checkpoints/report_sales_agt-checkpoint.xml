@@ -1,0 +1,57 @@
+<odoo>
+<data>
+    <!-- <report
+    id="partner_xlsx"
+    model="res.partner"
+    string="Print to RRD"
+    report_type="xlsx"
+    name="ibas_agt.sales_report"
+    file="res_partner"
+    attachment_use="False"
+/> -->
+
+ <record id="sales_report_ibas_view_form" model="ir.ui.view">
+        <field name="name">ibas.sales.report.view.form</field>
+        <field name="model">ibas_agt.sales.report</field>
+        <field name="arch" type="xml">
+            <form string="Sales Report">
+                <sheet>
+                    <group>
+                        <field name="from_date"/>
+                        <field name="to_date"/>
+                    </group>
+                    <footer>
+                        <button string="Generate Report" name="get_report" type="object" class="oe_highlight"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <act_window id="sales_report_ibas_view_form_action"
+                name="Sales Report"
+                res_model="ibas_agt.sales.report"
+                view_mode="form"
+                target="new"/>
+    
+    <menuitem
+        id="sale_wizard_menu"
+        name="Sales Report Wizard"
+        action="sales_report_ibas_view_form_action"
+        parent="account.menu_finance_reports"
+        sequence="10"/>
+
+        <report
+            id="report_sales_xlsx"
+            model="ibas_agt.sales.report"
+            string="Sales Report v2"
+            report_type="xlsx"
+            name="ibas_agt.sales_report_xlsx"
+            file="ibas_agt.sales_report_xlsx"
+            attachment_use= "False"
+            menu = "False"
+        />
+
+
+</data>
+</odoo>

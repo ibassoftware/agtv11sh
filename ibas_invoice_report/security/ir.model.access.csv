@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+invoice_wizard_reports_user,invoice.wizard.reports.user,ibas_invoice_report.model_invoice_wizard_reports,account.group_account_invoice,1,1,1,1
+invoice_report_out_user,invoice.report.out.user,ibas_invoice_report.model_invoice_report_out,account.group_account_invoice,1,1,1,1
