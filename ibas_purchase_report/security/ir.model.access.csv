@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_ibas_purchase_report_wizard_reports,access_ibas_purchase_report_wizard_reports,model_wizard_reports,base.group_user,1,1,1,0
+access_ibas_purchase_report_purchase_report_out,access_ibas_purchase_report_purchase_report_out,model_purchase_report_out,base.group_user,1,1,1,0
