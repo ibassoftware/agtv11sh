@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from datetime import datetime
 import logging
 
 from odoo import _, api, fields, models
@@ -15,6 +16,38 @@ class Invoice(models.Model):
 
     last_date_paid = fields.Date(
         string='Last Date Paid', compute='_compute_last_date_paid')
+
+    last_delivery_date = fields.Date(
+        string='Last Delivery Date', compute='_compute_last_delivery_date')
+
+    total_analytic_acc_debit = fields.Float(
+        string='Total Analytic Account Debit', compute='_compute_aa_debit')
+
+    @api.depends('move_id')
+    def _compute_aa_debit(self):
+        for rec in self:
+            if rec.move_id:
+                debit = 0
+                for line in rec.move_id.line_ids:
+                    if line.analytic_account_id:
+                        debit += line.debit
+                    else:
+                        debit = 0
+                rec.total_analytic_acc_debit = debit
+
+            else:
+                rec.total_analytic_acc_debit = 0
+
+    @api.depends('invoice_line_ids')
+    def _compute_last_delivery_date(self):
+        for record in self:
+            for line in record['invoice_line_ids']:
+                dates = []
+                if line.delivery_date:
+                    dates.append(line.delivery_date)
+                    record['last_delivery_date'] = max(dates)
+                else:
+                    record['last_delivery_date'] = False
 
     @api.depends('residual')
     def _compute_total_paid(self):
