@@ -4,14 +4,14 @@
 
         <template id="ckus_check_extend" inherit_id="l10n_us_check_printing.ckus_check">
             <xpath expr="//div[@class='ckus_check']" position="replace">
-                <div class="ckus_check" style="font-size:15px;">
+                <div class="ckus_check custom_font" style="font-size:13px;">
                     <!-- <div class="sequence_number" t-if="page['sequence_number']" t-esc="page['sequence_number']" /> -->
                     <div class="ckus_date" t-esc="datetime.datetime.strptime(page['payment_date'], '%m/%d/%Y').strftime('%B %d, %Y')" style="top: 0.37in;left: 6.13in;font-weight: 700;" />
                     <div class="ckus_amount" style="top: 0.60in;left: 6.35in;font-weight: 700;">
                         <t t-esc="page['amount']"/>
                     </div>
-                    <div class="ckus_payee_name" t-esc="page['partner_name']" style="top: 0.70in; left: 1.30in; font-size: 14px;font-weight: 700;" />
-                    <div class="ckus_amount_in_word" t-esc="page['amount_in_word']" style="top: 0.95in; left: 1.15in; font-weight: normal; font-size: 14px;font-weight: 700;"/>
+                    <div class="ckus_payee_name" t-esc="page['partner_name']" style="top: 0.70in; left: 1.30in;font-weight: 700;" />
+                    <div class="ckus_amount_in_word" t-esc="page['amount_in_word']" style="top: 0.95in; left: 1.15in;"/>
                 </div>
             </xpath>
         </template>
