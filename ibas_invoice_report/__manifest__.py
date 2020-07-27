@@ -18,6 +18,7 @@
     'depends': ['account_invoicing'],
     # 'images': ['static/description/banner.jpg'],
     'data': [
+        'security/ir.model.access.csv',
         # 'wizard/print_purchase_order_summary_view.xml',
         'wizard/invoice_xls_wiz.xml',
         # 'report/order_summary_report_view.xml',

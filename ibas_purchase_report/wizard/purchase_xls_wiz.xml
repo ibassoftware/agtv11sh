@@ -6,13 +6,18 @@
         <field name="model">wizard.reports</field>
         <field name="arch" type="xml">
             <form string="Export Purchase Order">
-            <p class="oe_grey">
-            You want to Print Purchase Excel Report?
-            </p>			  
+                <sheet>
+                <group>
+                    <field name="from_date"/>
+                    <field name="to_date"/>
+                    <field name="order_status"/>
+                </group>
+
                 <footer>
-                    <button string="Print Excel Report" class="btn-primary" name="generate_excel_report" type="object" />
+                    <button string="Generate Excel Report" class="btn-primary" name="generate_excel_report" type="object" />
                     <button string="Cancel" class="btn-primary" special="cancel"/>
                 </footer>
+                </sheet>
             </form>						
         </field>
     </record>
@@ -36,8 +41,25 @@
 	</record>	
 		
 
-    <act_window id="action_purchase_excel" key2="client_action_multi"
+    <!--<act_window id="action_purchase_excel" key2="client_action_multi"
         name="Purchase Order Excel Report " res_model="wizard.reports" src_model="purchase.order"
-        view_mode="form" target="new" />
+        view_mode="form" target="new" /> -->
 
+    
+    <record id="action_print_purchase_order_summary" model="ir.actions.act_window">
+        <field name="name">Purchase Order Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wizard.reports</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_purchase_reporting" name="Reporting" parent="purchase.menu_purchase_root" sequence="99"/>
+
+    <menuitem id="purchase.purchase_report" name="Purchase Analysis" parent="menu_purchase_reporting" sequence="99"
+    groups="purchase.group_purchase_manager" action="purchase.action_purchase_order_report_all"/>
+
+    <menuitem action="action_print_purchase_order_summary" id="menu_print_purchase_order_summary_report"
+    sequence="100" parent="menu_purchase_reporting" />
 </odoo>
