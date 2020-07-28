@@ -116,9 +116,11 @@ class SalesXlsx(models.AbstractModel):
                             have_sales = True
                         elif move.account_id.code in cost_account:
                             cost_amount += move.debit
-                        else:
-                            if not have_sales:
-                                sales_amount += move.credit
+                                
+                for move in move_lines:
+                    if move.product_id == obj.product_id:
+                        if not move.account_id.code in sales_account and not have_sales:
+                            sales_amount += move.credit
                             
             sheet.write(iterator, 10, sales_amount)
             sheet.write(iterator, 11, cost_amount)
