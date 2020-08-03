@@ -17,6 +17,7 @@ class SaleOrder(models.Model):
 
 	# OVERRIDE
 	validity_date = fields.Date(states={'draft': [('readonly', False)], 'manager_approval': [('readonly', False)], 'admin_approval': [('readonly', False)], 'approved': [('readonly', False)], 'sent': [('readonly', False)]},)
+	confirmation_date = fields.Datetime(string='Confirmation Date', readonly=False, index=True, help="Date on which the sales order is confirmed.", oldname="date_confirm", copy=False)
 
 class SaleOrderLine(models.Model):
 	_inherit = 'sale.order.line'
