@@ -23,6 +23,7 @@ class SalesXlsx(models.AbstractModel):
             ('invoice_id.type','in',['out_invoice','out_refund']),
             ('invoice_id.date_invoice','>=',date_start),
             ('invoice_id.date_invoice','<=',date_end),
+            ('invoice_id.state','in',['open','paid']),
             ])
 
         iterator = 1
