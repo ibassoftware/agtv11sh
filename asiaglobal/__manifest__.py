@@ -20,9 +20,8 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','crm', 'sale_management', 'purchase','hr', 'hr_expense', 'helpdesk', 'sales_team', 'account_reports',
-    'sale','sale_crm', 'mail', 'sale_subscription', 'product', 'stock', 'stock_account', 'account', 'account_budget', 'calendar', 'stock_analytic', 'ibas_agt', 
-    'account_check_printing', 'l10n_us_check_printing'],
+    'depends': ['base', 'crm', 'sale_management', 'purchase', 'hr', 'hr_expense', 'helpdesk', 'sales_team', 'account_reports',
+                'sale', 'sale_crm', 'mail', 'sale_subscription', 'product', 'stock', 'stock_account', 'account', 'account_budget', 'calendar', 'stock_analytic', 'ibas_agt'],
 
     # always loaded
     'data': [
@@ -35,6 +34,7 @@
         'data/timesheet_data.xml',
         'data/job_order_data.xml',
         'data/decimal_accuracy_data.xml',
+        'data/analytic_account_data.xml',
         'views/assets.xml',
         'views/views.xml',
         'views/templates.xml',
@@ -61,7 +61,6 @@
         'views/calendar_views.xml',
         'views/hr_expense_views.xml',
         'views/stock_inventory_views.xml',
-        'views/account_payment_view.xml',
         'report/report_quotation_service.xml',
         'report/service_report.xml',
         'report/report_job_order.xml',
@@ -75,7 +74,6 @@
         'report/report_deliveryslip.xml',
         'report/report_account_payable_voucher.xml',
         'report/report_budget_view.xml',
-        'report/report_print_check_views.xml',
         'report/report.xml',
         'views/service_menu.xml',
         'wizard/maintenance_jo_views.xml',
