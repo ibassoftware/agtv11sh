@@ -17,6 +17,9 @@ class AsiaGlobalEquipmentHistory(models.Model):
     picture_dispatched = fields.Binary()
     picture_returned = fields.Binary()
     documents = fields.Binary()
+    filename = fields.Char()
+    picturename_dis = fields.Char()
+    picturename_ret = fields.Char()
 
     equipment_id = fields.Many2one(
         'asiaglobal.equipment_profile')
