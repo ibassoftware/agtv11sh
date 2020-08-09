@@ -194,25 +194,21 @@
 							</h1>
 						</div>
 
-						<group colspan="6" col="6">
-							<group colspan="3" col="3">
+						<group>
+							<group>
 								<field name="customer" domain="[('customer','=',True)]" context="{'search_default_customer':1}" options='{"always_reload": True}'/>
 								<field name="ship_to" context="{'default_type':'delivery', 'show_address': 1}" options='{"always_reload": True}'/>
 								<field name="manufacturer"/>
 								<field name="model" domain="[('manufacturer','=',manufacturer)]"/>
 								<field name="serial_number"/>
 							</group>
-							<group colspan="2" col="2">
+							<group>
 								<field name="type"/>
 								<field name="date_in_service"/>
 								<field name="capacity"/>
 								<field name="hour_meter" readonly="1"/>
 							</group>
-							<group colspan="1" col="1">
-								<field name="profile_image"  style="height:110px;width:110px;" widget="image" nolabel="1"/>
-							</group>
 						</group>
-						
 
 						<notebook>
 
