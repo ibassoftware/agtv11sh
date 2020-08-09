@@ -4,7 +4,7 @@
 
         <template id="ckus_check_extend" inherit_id="l10n_us_check_printing.ckus_check">
             <xpath expr="//div[@class='ckus_check']" position="replace">
-                <div class="ckus_check custom_font" style="font-size:13px;">
+                <div class="ckus_check custom_font" style="font-size:14px;">
                     <!-- <div class="sequence_number" t-if="page['sequence_number']" t-esc="page['sequence_number']" /> -->
                     <div class="ckus_date" t-esc="datetime.datetime.strptime(page['payment_date'], '%m/%d/%Y').strftime('%B %d, %Y')" style="top: 0.37in;left: 6.13in;font-weight: 700;" />
                     <div class="ckus_amount" style="top: 0.60in;left: 6.35in;font-weight: 700;">
