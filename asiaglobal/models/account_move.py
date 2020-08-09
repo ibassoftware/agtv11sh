@@ -6,11 +6,11 @@ _logger = logging.getLogger(__name__)
 
 
 class IbasAccountMoveLine(models.Model):
-    _inherit = 'account.move.line'
+	_inherit = 'account.move.line'
 
-    @api.model
-    def _default_account_analytic(self):
-        return self.env.ref('asiaglobal.analytic_account_undefined').id
+	@api.model
+	def _default_account_analytic(self):
+		return self.env.ref('asiaglobal.analytic_account_undefined').id
 
-    analytic_account_id = fields.Many2one(
-        'account.analytic.account', string='Analytic Account', default=_default_account_analytic)
+	analytic_account_id = fields.Many2one(
+		'account.analytic.account', string='Analytic Account', default=_default_account_analytic)
