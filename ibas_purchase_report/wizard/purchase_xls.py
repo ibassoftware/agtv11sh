@@ -42,10 +42,6 @@ class PurchaseWizard(models.Model):
             workbook = xlwt.Workbook(encoding="UTF-8")
             worksheet = workbook.add_sheet('Sheet 1')
             style = xlwt.easyxf('font: bold off, name Arial')
-
-            style2 = xlwt.XFStyle()
-            style2.num_format_str = '#,##0.00'
-
             style_header = xlwt.easyxf(
                 'font: bold True, name Arial; borders: bottom_color black, bottom medium; align: horiz center')
             worksheet.col(1).width = 1000
@@ -91,19 +87,15 @@ class PurchaseWizard(models.Model):
                 if order.currency_id.id == 37:
                     custom_order['debit'] = order.amount_total
                 else:
-                    sum_aa = 0.0
-                    for inv in order.invoice_ids:
-                        sum_aa += inv.total_analytic_acc_debit
-                    custom_order['debit'] = sum_aa
-                    #custom_order['debit'] = order.invoice_ids.total_analytic_acc_debit
+                    custom_order['debit'] = order.invoice_ids.total_analytic_acc_debit
 
                 worksheet.write(n, 1, i, style)
                 worksheet.write(n, 2, custom_order['partner_id'], style)
                 worksheet.write(n, 3, custom_order['po_no'], style)
                 worksheet.write(n, 4, custom_order['date_order'], style)
                 worksheet.write(n, 5, custom_order['date_due'], style)
-                worksheet.write(n, 6, custom_order['debit'], style2)
-                worksheet.write(n, 7, custom_order['amount_total'], style2)
+                worksheet.write(n, 6, custom_order['debit'], style)
+                worksheet.write(n, 7, custom_order['amount_total'], style)
                 worksheet.write(n, 8, custom_order['currency_id'], style)
                 worksheet.write(
                     n, 9, custom_order['order_store'].upper(), style)
