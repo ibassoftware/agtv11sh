@@ -7,10 +7,29 @@ from dateutil.relativedelta import *
 import logging
 _logger = logging.getLogger(__name__)
 
+
+class AsiaGlobalEquipmentHistory(models.Model):
+	_name = 'asiaglobal.equipment_history'
+
+	name = fields.Char()
+	start_contract = fields.Date()
+	end_contract = fields.Date()
+	picture_dispatched = fields.Binary()
+	picture_returned = fields.Binary()
+	documents = fields.Binary()
+	filename = fields.Char()
+	picturename_dis = fields.Char()
+	picturename_ret = fields.Char()
+
+	equipment_id = fields.Many2one(
+		'asiaglobal.equipment_profile')
+
+
 class AsiaGlobalEquipmentType(models.Model):
 	_name = 'asiaglobal.equipment_type'
 
 	name = fields.Char(required=True)
+
 
 class AsiaGlobalEngineModel(models.Model):
 	_name = 'asiaglobal.engine_model'
@@ -18,11 +37,13 @@ class AsiaGlobalEngineModel(models.Model):
 	name = fields.Char(required=True)
 	manufacturer = fields.Many2one('asiaglobal.manufacturer')
 
+
 class AsiaGlobalDriveAxleModel(models.Model):
 	_name = 'asiaglobal.drive_axlemodel'
 
 	name = fields.Char(required=True)
 	manufacturer = fields.Many2one('asiaglobal.manufacturer')
+
 
 class AsiaGlobalTransmissionModel(models.Model):
 	_name = 'asiaglobal.transmission_model'
@@ -30,15 +51,17 @@ class AsiaGlobalTransmissionModel(models.Model):
 	name = fields.Char(required=True)
 	manufacturer = fields.Many2one('asiaglobal.manufacturer')
 
+
 class AsiaGlobalMastType(models.Model):
 	_name = 'asiaglobal.mast_type'
 
 	name = fields.Char(required=True)
 
+
 class AsiaGlobalEquipmentProfile(models.Model):
 	_name = 'asiaglobal.equipment_profile'
 	_description = 'Equipment Profile'
-	_inherit = ['mail.thread','mail.activity.mixin']
+	_inherit = ['mail.thread', 'mail.activity.mixin']
 
 	@api.depends('job_expense_ids.amount_total')
 	def _amount_all(self):
@@ -50,7 +73,7 @@ class AsiaGlobalEquipmentProfile(models.Model):
 			for expense in equipment.job_expense_ids:
 				amount_expense_total += expense.amount_total
 			equipment.update({
-				'amount_expense_total':amount_expense_total,
+				'amount_expense_total': amount_expense_total,
 			})
 
 	@api.one
@@ -71,12 +94,15 @@ class AsiaGlobalEquipmentProfile(models.Model):
 				job_material_request.append(request.id)
 		self.job_material_request_ids = job_material_request
 
-	name = fields.Char(string='Equipment Profile', store=True, compute="_compute_name")
-	customer = fields.Many2one('res.partner', ondelete='cascade', required=True, track_visibility='onchange')
+	name = fields.Char(string='Equipment Profile',
+					   store=True, compute="_compute_name")
+	customer = fields.Many2one(
+		'res.partner', ondelete='cascade', required=True, track_visibility='onchange')
 	ship_to = fields.Many2one('res.partner', string='Ship To / Site Address')
 	manufacturer = fields.Many2one('asiaglobal.manufacturer')
 	model = fields.Many2one('asiaglobal.manufacturer_model')
 	serial_number = fields.Char()
+	profile_image = fields.Binary()
 
 	date_in_service = fields.Date(required=True, default=fields.Datetime.now())
 	type = fields.Many2one('asiaglobal.equipment_type')
@@ -130,27 +156,40 @@ class AsiaGlobalEquipmentProfile(models.Model):
 	hour_meter = fields.Float(compute="_compute_hour_meter")
 
 	# WARRANTY
-	warranty_date_acceptance = fields.Date(string='Date of Acceptance', default=fields.Datetime.now())
+	warranty_date_acceptance = fields.Date(
+		string='Date of Acceptance', default=fields.Datetime.now())
 	warranty_year = fields.Float()
 	warranty_hours = fields.Float()
 
-	jo_ids = fields.One2many('asiaglobal.job_order', 'equipment_id', string='Job Orders', readonly=True)
+	jo_ids = fields.One2many('asiaglobal.job_order',
+							 'equipment_id', string='Job Orders', readonly=True)
 
 	# RENTAL
 	rental_date_start = fields.Date(string='Start of Rental Period')
 	rental_date_end = fields.Date(string='End of Rental Period')
 
-	equipment_owner_id = fields.Many2one('res.partner', string='Equipment Owner', track_visibility='onchange')
-	
+	equipment_owner_id = fields.Many2one(
+		'res.partner', string='Equipment Owner', track_visibility='onchange')
+
 	operational = fields.Boolean(default=True)
-	operational_message = fields.Char(string='Equipment Status', track_visibility='onchange')
+	operational_message = fields.Char(
+		string='Equipment Status', track_visibility='onchange')
 
-	parts_fitted = fields.Many2many('asiaglobal.service_report_parts', string='Parts Fitted', compute='_compute_parts_fitted')
+	parts_fitted = fields.Many2many(
+		'asiaglobal.service_report_parts', string='Parts Fitted', compute='_compute_parts_fitted')
 
-	job_expense_ids = fields.One2many('asiaglobal.job_expense', 'equipment_id', string='Job Expense')
-	amount_expense_total = fields.Float(string='Total Other Repair Costs', store=True, readonly=True, compute='_amount_all', track_visibility='always')
+	job_expense_ids = fields.One2many(
+		'asiaglobal.job_expense', 'equipment_id', string='Job Expense')
+	amount_expense_total = fields.Float(
+		string='Total Other Repair Costs', store=True, readonly=True, compute='_amount_all', track_visibility='always')
 
-	job_material_request_ids = fields.Many2many('asiaglobal.job_material_request_form', string='Job Material Request Form', compute='_compute_job_material_request')
+	job_material_request_ids = fields.Many2many(
+		'asiaglobal.job_material_request_form', string='Job Material Request Form', compute='_compute_job_material_request')
+
+	# HISTORY
+
+	history_ids = fields.One2many(
+		'asiaglobal.equipment_history', 'equipment_id', string='History')
 
 	@api.multi
 	@api.onchange('customer')
@@ -176,7 +215,7 @@ class AsiaGlobalEquipmentProfile(models.Model):
 			self.operational_message = "NOT OPERATIONAL"
 
 	@api.one
-	@api.depends('customer','manufacturer','model','serial_number')
+	@api.depends('customer', 'manufacturer', 'model', 'serial_number')
 	def _compute_name(self):
 		name = ''
 		if self.customer:
@@ -220,7 +259,8 @@ class AsiaGlobalEquipmentProfile(models.Model):
 		count = vals.get('maintenance_frequency_count')
 		frequency = vals.get('maintenance_frequency')
 		if date_in_service and count and frequency:
-			vals['next_maintenance_date'] = self.get_maintenance_date(date_in_service,count,frequency)
+			vals['next_maintenance_date'] = self.get_maintenance_date(
+				date_in_service, count, frequency)
 
 		result = super(AsiaGlobalEquipmentProfile, self).create(vals)
 		return result
@@ -236,6 +276,6 @@ class AsiaGlobalEquipmentProfile(models.Model):
 			'serial_number': equipment_id.serial_number,
 			'scheduled_date': date,
 			'actual_repair_date': date,
-		}                
+		}
 		job_order = self.env['asiaglobal.job_order'].create(values)
 		return job_order

@@ -194,21 +194,25 @@
 							</h1>
 						</div>
 
-						<group>
-							<group>
+						<group colspan="6" col="6">
+							<group colspan="3" col="3">
 								<field name="customer" domain="[('customer','=',True)]" context="{'search_default_customer':1}" options='{"always_reload": True}'/>
 								<field name="ship_to" context="{'default_type':'delivery', 'show_address': 1}" options='{"always_reload": True}'/>
 								<field name="manufacturer"/>
 								<field name="model" domain="[('manufacturer','=',manufacturer)]"/>
 								<field name="serial_number"/>
 							</group>
-							<group>
+							<group colspan="2" col="2">
 								<field name="type"/>
 								<field name="date_in_service"/>
 								<field name="capacity"/>
 								<field name="hour_meter" readonly="1"/>
 							</group>
+							<group colspan="1" col="1">
+								<field name="profile_image"  style="height:110px;width:110px;" widget="image" nolabel="1"/>
+							</group>
 						</group>
+						
 
 						<notebook>
 
@@ -254,6 +258,41 @@
 										<field name="battery_3_serial"/>
 									</group>
 								</group>
+							</page>
+
+							<page string="Equipment History">
+								<field name="history_ids">
+									<tree editable="top">
+										<field name="name" string="Customer Name"/>
+										<field name="start_contract"/>
+										<field name="end_contract"/>
+										<field name="picture_dispatched" widget="binary" filename="picturename_dis"/>
+										<field name="picturename_dis" invisible="1"/>
+										<field name="picture_returned" widget="binary" filename="picturename_ret"/>
+										<field name="picturename_ret" invisible="1"/>
+										<field name="documents" widget="binary" filename="filename"/>
+										<field name="filename" invisible="1"/>
+									</tree>
+									<form>
+										<group>
+											<group>
+											<field name="name" string="Customer Name"/>
+											<field name="equipment_id" readonly="1" invisible="1"/>
+											<field name="start_contract"/>
+											<field name="end_contract"/>
+											</group>
+
+											<group>
+											<field name="picture_dispatched" style="height:100px;width:100px;" widget="image"/>
+											<field name="picturename_dis" invisible="1"/>
+											<field name="picture_returned" style="height:100px;width:100px;" widget="image"/>
+											<field name="picturename_ret" invisible="1"/>
+											<field name="documents" widget="binary" filename="filename"/>
+											<field name="filename" invisible="1"/>
+											</group>
+										</group>
+									</form>
+								</field>
 							</page>
 
 							<page string="Other Information">
