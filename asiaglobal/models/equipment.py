@@ -11,7 +11,7 @@ _logger = logging.getLogger(__name__)
 class AsiaGlobalEquipmentHistory(models.Model):
     _name = 'asiaglobal.equipment_history'
 
-    name = fields.Char()
+    name = fields.Many2one('res.partner', domain=[('customer', '=', True)])
     start_contract = fields.Date()
     end_contract = fields.Date()
     picture_dispatched = fields.Binary()

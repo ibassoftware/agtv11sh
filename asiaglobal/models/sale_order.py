@@ -19,12 +19,6 @@ class SaleOrder(models.Model):
     # OVERRIDE
     validity_date = fields.Date(states={'draft': [('readonly', False)], 'manager_approval': [('readonly', False)], 'admin_approval': [
                                 ('readonly', False)], 'approved': [('readonly', False)], 'sent': [('readonly', False)]},)
-    invoice_status = fields.Selection([
-        ('upselling', 'Upselling Opportunity'),
-        ('invoiced', 'Fully Invoiced'),
-        ('to invoice', 'To Invoice'),
-        ('no', 'Invoiced')
-    ], string='Invoice Status', compute='_get_invoiced', store=True, readonly=True)
 
 
 class SaleOrderLine(models.Model):
