@@ -102,6 +102,7 @@ class AsiaGlobalEquipmentProfile(models.Model):
     manufacturer = fields.Many2one('asiaglobal.manufacturer')
     model = fields.Many2one('asiaglobal.manufacturer_model')
     serial_number = fields.Char()
+    profile_image = fields.Binary()
 
     date_in_service = fields.Date(required=True, default=fields.Datetime.now())
     type = fields.Many2one('asiaglobal.equipment_type')
@@ -184,6 +185,11 @@ class AsiaGlobalEquipmentProfile(models.Model):
 
     job_material_request_ids = fields.Many2many(
         'asiaglobal.job_material_request_form', string='Job Material Request Form', compute='_compute_job_material_request')
+
+    # HISTORY
+
+    history_ids = fields.One2many(
+        'asiaglobal.equipment_history', 'equipment_id', string='History')
 
     @api.multi
     @api.onchange('customer')
