@@ -1,8 +1,8 @@
 from odoo import models, fields, api, _
 from odoo.addons import decimal_precision as dp
 
-
 class SaleOrder(models.Model):
+
     _inherit = 'sale.order'
 
     # NEW FIELDS
@@ -21,6 +21,7 @@ class SaleOrder(models.Model):
                                 ('readonly', False)], 'approved': [('readonly', False)], 'sent': [('readonly', False)]},)
     confirmation_date = fields.Datetime(string='Confirmation Date', readonly=False, index=True,
                                         help="Date on which the sales order is confirmed.", oldname="date_confirm", copy=False)
+
 
 
 class SaleOrderLine(models.Model):
