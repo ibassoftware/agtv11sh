@@ -75,10 +75,10 @@ class IBASPO(models.Model):
                 if prod_qty == qty_received and line.qty_received >= 1:
                     rec.order_status = 'close'
 
-    @api.depends('date_planned')
+    @api.depends('date_due')
     def _compute_remarks_status(self):
         for rec in self:
-            if rec.date_planned and rec.date_planned < fields.Datetime.now():
+            if rec.date_due and rec.date_due < fields.Datetime.now():
                 rec.remarks_status = 'overdue'
             else:
                 rec.remarks_status = 'new'
