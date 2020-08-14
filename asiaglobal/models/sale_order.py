@@ -1,6 +1,7 @@
 from odoo import models, fields, api, _
 from odoo.addons import decimal_precision as dp
 
+
 class SaleOrder(models.Model):
 
     _inherit = 'sale.order'
@@ -22,6 +23,25 @@ class SaleOrder(models.Model):
     confirmation_date = fields.Datetime(string='Confirmation Date', readonly=False, index=True,
                                         help="Date on which the sales order is confirmed.", oldname="date_confirm", copy=False)
 
+    invoice_status = fields.Selection(selection_add=[('invoice', 'Invoiced')])
+
+    @api.depends('state', 'order_line.invoice_status', 'invoice_ids')
+    def _get_invoiced(self,):
+        order = super(SaleOrder, self)._get_invoiced()
+
+        if self.invoice_ids:
+            invoice_status = 'invoice'
+
+        elif self.confirmation_date:
+            invoice_status = 'to invoice'
+
+        else:
+            invoice_status = 'no'
+
+        self.update({
+            'invoice_status': invoice_status
+        })
+        return order
 
 
 class SaleOrderLine(models.Model):
