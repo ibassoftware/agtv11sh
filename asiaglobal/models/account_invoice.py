@@ -1,13 +1,15 @@
-from odoo import models, fields, api, _ 
+from odoo import models, fields, api, _
 from odoo.addons import decimal_precision as dp
 
 import logging
 _logger = logging.getLogger(__name__)
 
+
 class AccountInvoice(models.Model):
 	_inherit = 'account.invoice'
 
-	delivery_receipt_no = fields.Char(string='Delivery Receipt No.', compute='_get_deliveries')
+	delivery_receipt_no = fields.Char(
+		string='Delivery Receipt No.', compute='_get_deliveries')
 	bus_style = fields.Char(string='Business Style')
 	delivery_receipt_manual_no = fields.Char(string='Delivery Receipt No.')
 
@@ -19,12 +21,13 @@ class AccountInvoice(models.Model):
 				for sale in invoice.sale_line_ids:
 					pickings = sale.mapped('order_id').mapped('picking_ids')
 					for pick in pickings:
-						if pick.state not in ['draft','cancel']:
+						if pick.state not in ['draft', 'cancel']:
 							if not delivery_receipt_no:
 								delivery_receipt_no = pick.name
 							else:
 								delivery_receipt_no += ', %s' % pick.name
 			record.delivery_receipt_no = delivery_receipt_no
+
 
 class AccountInvoiceLine(models.Model):
 	_inherit = 'account.invoice.line'
@@ -37,6 +40,13 @@ class AccountInvoiceLine(models.Model):
 				description_name = record.name.replace('\n', ' ')
 			record.description_name = description_name
 
+	@api.model
+	def _default_account_analytic(self):
+		return self.env.ref('asiaglobal.analytic_account_undefined').id
+
 	# EXTEND TO USE CUSTOM SALES DECIMAL ACCURACY
 	price_unit = fields.Float(digits=dp.get_precision('Sale Product Price'))
 	description_name = fields.Text(compute='_get_description')
+
+	account_analytic_id = fields.Many2one(
+		'account.analytic.account', string='Analytic Account', default=_default_account_analytic)

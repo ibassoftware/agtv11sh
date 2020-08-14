@@ -20,29 +20,14 @@ class SalesXlsx(models.AbstractModel):
         cost_account = ['510000', '520000','531000']
 
         myids = self.env['account.invoice.line'].search([
-            ('invoice_id.type','=','out_invoice'),
+            ('invoice_id.type','in',['out_invoice','out_refund']),
             ('invoice_id.date_invoice','>=',date_start),
-            ('invoice_id.date_invoice','<=',date_end)
+            ('invoice_id.date_invoice','<=',date_end),
+            ('invoice_id.state','in',['open','paid']),
             ])
 
         iterator = 1
         sheet = workbook.add_worksheet()
-#         sheet.write(0, 0, "Product")
-#         sheet.write(0, 1, "Invoice Number")
-#         sheet.write(0, 2, "State")
-#         sheet.write(0, 3, "Date")
-#         sheet.write(0, 4, "Salesperson")
-#         sheet.write(0, 5, "Origin")
-#         sheet.write(0, 6, "Account")
-#         sheet.write(0, 7, "Analytic")
-#         sheet.write(0, 8, "QTY Delivered")
-#         sheet.write(0, 9, "QTY Invoiced")
-#         sheet.write(0, 10, "Subtotal")
-#         sheet.write(0, 11, "Total Cost")
-#         sheet.write(0, 12, "Gross Margin")
-#         sheet.write(0, 13, "Customer")
-#         sheet.write(0, 14, "Due Date")
-#         sheet.write(0, 15, "Last Payment Date")
 
         sheet.write(0, 0, "Sales Order")
         sheet.write(0, 1, "Analytic")
@@ -61,74 +46,55 @@ class SalesXlsx(models.AbstractModel):
         sheet.write(0, 14, "Amount Paid")
         sheet.write(0, 15, "Invoice Total Amount")
 
-#         for obj in myids:
-#             report_name = obj.name
-#             sheet.write(iterator, 0, obj.name)
-#             sheet.write(iterator, 1, obj.invoice_id.number)
-#             sheet.write(iterator, 2, obj.invoice_id.state)
-#             sheet.write(iterator, 3, obj.invoice_id.date_invoice)
-#             sheet.write(iterator, 4, obj.invoice_id.user_id.name)
-#             sheet.write(iterator, 5, obj.invoice_id.origin)
-#             sheet.write(iterator, 6, obj.account_id.display_name)
-#             sheet.write(iterator, 7, obj.account_analytic_id.name)
-#             if len(obj.sale_line_ids) > 0:
-#                 mysline = obj.sale_line_ids[0]
-#                 sheet.write(iterator, 8, mysline.qty_delivered)
-#                 sheet.write(iterator, 9, mysline.qty_invoiced)
-#                 sheet.write(iterator, 10, mysline.price_subtotal)
-#                 sheet.write(iterator, 11, mysline.total_cost)
-#                 sheet.write(iterator, 12, mysline.gross_margin)
-#             else:
-#                 sheet.write(iterator, 9, obj.quantity)
-#                 sheet.write(iterator, 10, obj.price_subtotal)
-
-
-#             sheet.write(iterator, 13, obj.invoice_id.partner_id.name)
-#             sheet.write(iterator, 14, obj.invoice_id.date_due)
-#             if len(obj.invoice_id.payment_move_line_ids) > 0:
-#                 last_payment = obj.invoice_id.payment_move_line_ids[-1]
-#                 sheet.write(iterator, 15, last_payment.date)
-            
-#             iterator = iterator + 1
-
         for obj in myids:
             report_name = obj.name
-            sheet.write(iterator, 0, obj.invoice_id.origin or '')
-            sheet.write(iterator, 1, obj.account_analytic_id.name or '')
-            sheet.write(iterator, 2, obj.invoice_id.user_id.name or '')
-            sheet.write(iterator, 3, obj.account_id.display_name or '')
-            sheet.write(iterator, 4, obj.invoice_id.date_invoice or '')
-            sheet.write(iterator, 5, obj.invoice_id.date_due or '')
-            sheet.write(iterator, 6, obj.invoice_id.move_name or '')
-            sheet.write(iterator, 7, obj.invoice_id.partner_id.name or '')
-            sheet.write(iterator, 8, obj.name or '')
-            sheet.write(iterator, 9, obj.quantity)
-            
-            move_lines = obj.invoice_id.move_id.line_ids
-            sales_amount = 0
-            cost_amount = 0
-            if move_lines:
-                for move in move_lines:
-                    if move.product_id == obj.product_id:
-                        if move.account_id.code in sales_account:
-                            sales_amount += move.credit
-                        elif move.account_id.code in cost_account:
-                            cost_amount += move.debit
-                        else:
-                            sales_amount += move.credit
-                            
-            sheet.write(iterator, 10, sales_amount)
-            sheet.write(iterator, 11, cost_amount)
-            
-            if len(obj.sale_line_ids) > 0:
-                mysline = obj.sale_line_ids[0]
-                sheet.write(iterator, 12, mysline.gross_margin)
+            account_code = obj.account_id.code
+            include_line = account_code.startswith('50')
+            if include_line:
+                sheet.write(iterator, 0, obj.invoice_id.origin or '')
+                sheet.write(iterator, 1, obj.account_analytic_id.name or '')
+                sheet.write(iterator, 2, obj.invoice_id.user_id.name or '')
+                sheet.write(iterator, 3, obj.account_id.display_name or '')
+                sheet.write(iterator, 4, obj.invoice_id.date_invoice or '')
+                sheet.write(iterator, 5, obj.invoice_id.date_due or '')
+                sheet.write(iterator, 6, obj.invoice_id.move_name or '')
+                sheet.write(iterator, 7, obj.invoice_id.partner_id.name or '')
+                sheet.write(iterator, 8, obj.name or '')
+                sheet.write(iterator, 9, obj.quantity)
 
-            sheet.write(iterator, 13, obj.invoice_id.last_date_paid or '')
-            sheet.write(iterator, 14, obj.invoice_id.total_amount_paid)
-            sheet.write(iterator, 15, obj.invoice_id.amount_total_company_signed)
-            
-            iterator = iterator + 1
+                move_lines = obj.invoice_id.move_id.line_ids
+                have_sales = False
+                sales_amount = 0
+                cost_amount = 0
+                if move_lines:
+                    for move in move_lines:
+                        if move.product_id == obj.product_id:
+                            if move.account_id.code.startswith('50'):
+                                sales_amount += move.credit
+                                have_sales = True
+                            elif move.account_id.code in cost_account:
+                                cost_amount += move.debit
+
+#                     for move in move_lines:
+#                         if move.product_id == obj.product_id:
+#                             if not move.account_id.code in sales_account and not have_sales:
+#                                 sales_amount += move.credit
+
+                gross_margin = sales_amount - cost_amount          
+                if obj.invoice_id.type == 'out_refund':
+                    sheet.write(iterator, 10, -abs(sales_amount))
+                    sheet.write(iterator, 11, -abs(cost_amount))
+                    sheet.write(iterator, 12, -abs(gross_margin))
+                else:
+                    sheet.write(iterator, 10, sales_amount)
+                    sheet.write(iterator, 11, cost_amount)
+                    sheet.write(iterator, 12, gross_margin)
+
+                sheet.write(iterator, 13, obj.invoice_id.last_date_paid or '')
+                sheet.write(iterator, 14, obj.invoice_id.total_amount_paid)
+                sheet.write(iterator, 15, obj.invoice_id.amount_total_company_signed)
+
+                iterator = iterator + 1
         
 class SalesReportWizard(models.TransientModel):
     _name = 'ibas_agt.sales.report'
