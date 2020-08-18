@@ -27,7 +27,7 @@
                         </tr>
                         <tr>
                             <td colspan="2" rowspan="2" class="noborder" valign="top" width="65%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
-                                <b>DISPLAY EXPENSE FOR: </b> <h4><span t-field="o.name"/></h4>
+                                <b>DISPLAY EXPENSE FOR: </b> <span t-field="o.expense_type"/>
                             </td>
 
                             <td colspan="2" class="noborder" valign="top" width="35%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">

@@ -148,7 +148,7 @@
         <report 
             id="asiaglobal_report_apv_expense"
             model="hr.expense.sheet"
-            string="Expense Report2"
+            string="Expense Report"
             report_type="qweb-pdf"
             name="asiaglobal.report_apv_expense"
             file="asiaglobal.report_apv_expense"
