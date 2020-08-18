@@ -145,5 +145,17 @@
             paperformat="asiaglobal.paperformat_report_account_payable_voucher"
         />
 
+        <report 
+            id="asiaglobal_report_apv_expense"
+            model="hr.expense.sheet"
+            string="Expense Report2"
+            report_type="qweb-pdf"
+            name="asiaglobal.report_apv_expense"
+            file="asiaglobal.report_apv_expense"
+            menu="True"
+            paperformat="asiaglobal.paperformat_report_account_payable_voucher"
+        />
+
+
     </data>
 </odoo>
