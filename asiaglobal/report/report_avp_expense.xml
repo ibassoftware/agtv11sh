@@ -20,14 +20,30 @@
                             </td>
                             <td colspan="2" class="noborder" valign="top" width="35%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
                                 <b>ANALYTIC ACCOUNT: </b>
-                                <t t-if="o.expense_line_ids">
-                                    <span t-field="o.expense_line_ids[0].account_id.name"/>
+                                <t t-foreach="o.expense_line_ids" t-as="line">
+                                    <t t-if="line.analytic_account_id">
+                                        <span t-field="line[0].analytic_account_id.name"/>
+                                    </t>
                                 </t>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2" rowspan="2" class="noborder" valign="top" width="65%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
-                                <span t-field="o.expense_type"/>
+                                <span>
+                                <t t-if="o.expense_type == 'reimbursement'"><input type="checkbox" checked="checked"/></t>
+                                <t t-else=""><input type="checkbox"/></t>
+                                </span><span> REIMBURSEMNET</span><br/>
+
+                                <span>
+                                <t t-if="o.expense_type == 'travel_abroad'"><input type="checkbox" checked="checked"/></t>
+                                <t t-else=""><input type="checkbox"/></t>
+                                </span><span> TRAVEL ABROAD</span><br/>
+
+                                <span>
+                                <t t-if="o.expense_type == 'liquidation'"><input type="checkbox" checked="checked"/></t>
+                                <t t-else=""><input type="checkbox"/></t>
+                                </span><span> LIQUIDATION</span><br/>
+                               
                             </td>
 
                             <td colspan="2" class="noborder" valign="top" width="35%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
@@ -103,6 +119,12 @@
                             </td>
                             <td class="noborder text-center" valign="top" width="15%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
                                 <span t-esc="total_amount" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td colspan="4" rowspan="2" class="noborder" valign="top" width="15%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                               <b>Remarks:</b><br/>
+                               <b>_________________________________________________________________________________________________________________</b>
                             </td>
                         </tr>
                     </table>
