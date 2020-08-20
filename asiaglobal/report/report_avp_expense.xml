@@ -122,9 +122,9 @@
                             </td>
                         </tr>
                          <tr>
-                            <td colspan="4" rowspan="2" class="noborder" valign="top" width="15%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
-                               <b>Remarks:</b><br/>
-                               <b>_________________________________________________________________________________________________________________</b>
+                            <td colspan="4" rowspan="2" class="noborder text-right" valign="top" width="15%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                               <b>Remarks:__________________________________________________________________________________________________________________________</b><br/>
+                               <b>__________________________________________________________________________________________________________________________</b>
                             </td>
                         </tr>
                     </table>
