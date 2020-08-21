@@ -51,6 +51,10 @@
                     </group>
                 </xpath>
 
+                <xpath expr="//notebook/page[2]/group/group[1]/field[@name='accounting_date']" position="after">
+                    <field name="remarks"/>   
+                </xpath>
+
                 
                 
             </field>
