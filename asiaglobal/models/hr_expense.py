@@ -55,6 +55,8 @@ class HrExpenseSheet(models.Model):
     payment_date = fields.Date(string='Payment Date')
     memo = fields.Char(string='Memo')
 
+    remarks = fields.Char(string="Remarks")
+
 
 class HrExpense(models.Model):
     _inherit = 'hr.expense'
