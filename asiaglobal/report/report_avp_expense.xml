@@ -20,11 +20,12 @@
                             </td>
                             <td colspan="2" class="noborder" valign="top" width="35%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
                                 <b>ANALYTIC ACCOUNT: </b>
-                                <t t-foreach="o.expense_line_ids" t-as="line">
+                               <!-- <t t-foreach="o.expense_line_ids" t-as="line">
                                     <t t-if="line.analytic_account_id">
-                                        <span t-field="line[0].analytic_account_id.name"/>
+                                        <span t-field="line.analytic_account_id.name"/>
                                     </t>
-                                </t>
+                                </t> -->
+                                <span t-field="o.expense_line_ids[0].analytic_account_id.name"/>
                             </td>
                         </tr>
                         <tr>
