@@ -32,14 +32,14 @@ class PurchaseWizard(models.Model):
         else:
             if partner_id:
                 orders = self.env['purchase.order'].search([
-                    ('order_store', '=', state),
+                    ('order_status', '=', state),
                     ('date_order', '>=', date_start),
                     ('date_order', '<=', date_end),
                     ('partner_id', '=', partner_id.id),
                 ])
             else:
                 orders = self.env['purchase.order'].search([
-                    ('order_store', '=', state),
+                    ('order_status', '=', state),
                     ('date_order', '>=', date_start),
                     ('date_order', '<=', date_end),
                 ])
@@ -90,8 +90,8 @@ class PurchaseWizard(models.Model):
                 #custom_order['debit'] = order.invoice_ids.total_analytic_acc_debit
                 custom_order['amount_total'] = order.amount_total
                 custom_order['currency_id'] = order.currency_id.name
-                custom_order['order_store'] = order.order_store
-                custom_order['remarks_store'] = order.remarks_store
+                custom_order['order_status'] = order.order_status
+                custom_order['remarks_status'] = order.remarks_status
 
                 if order.date_due == False:
                     custom_order['date_due'] = " "
@@ -116,9 +116,9 @@ class PurchaseWizard(models.Model):
                 worksheet.write(n, 7, custom_order['amount_total'], style2)
                 worksheet.write(n, 8, custom_order['currency_id'], style)
                 worksheet.write(
-                    n, 9, custom_order['order_store'].upper(), style)
+                    n, 9, custom_order['order_status'].upper(), style)
                 worksheet.write(
-                    n, 10, custom_order['remarks_store'].upper(), style)
+                    n, 10, custom_order['remarks_status'].upper(), style)
 
                 n += 1
                 i += 1
