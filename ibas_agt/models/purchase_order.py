@@ -12,16 +12,14 @@ class IBASPO(models.Model):
 
     customer_id = fields.Many2one('res.partner', string='PO For Customer')
 
-    order_status = fields.Selection([('open', 'Open'), ('partial', 'Partial'), (
-        'close', 'Closed')], compute='_compute_order_status')
+    order_status = fields.Selection([('open', 'Open'), ('partial', 'Partial'), ('close', 'Closed')], compute='_compute_order_status', store=True)
 
-    remarks_status = fields.Selection(
-        [('new', 'New'), ('overdue', 'Overdue')], default='new', compute='_compute_remarks_status')
+    remarks_status = fields.Selection([('new', 'New'), ('overdue', 'Overdue')], default='new', compute='_compute_remarks_status', store=True)
 
-    order_store = fields.Selection(
-        related='order_status', string='Order Store', store="True")
-    remarks_store = fields.Selection(
-        related='remarks_status', string='Remarks Store', store="True")
+#     order_store = fields.Selection(
+#         related='order_status', string='Order Store', store="True")
+#     remarks_store = fields.Selection(
+#         related='remarks_status', string='Remarks Store', store="True")
 
     date_due = fields.Date(string='Due Date')
 
