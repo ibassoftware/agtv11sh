@@ -31,6 +31,31 @@
                         </group>
                     </page>
                 </xpath>
+
+                <xpath expr="//sheet/group" position="replace">
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="payment_mode"/>
+                            <field name="responsible_id" invisible="1"/>
+                            <field name="total_amount" invisible="1"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="address_id" invisible="1"/>
+                            <field name="department_id" invisible="1"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                        <group>
+                            <field name="expense_type"/>
+                            <field name="amount_of_cash" widget="monetary"/>
+                         </group>
+                    </group>
+                </xpath>
+
+                <xpath expr="//notebook/page[2]/group/group[1]/field[@name='accounting_date']" position="after">
+                    <field name="remarks"/>   
+                </xpath>
+
+                
                 
             </field>
         </record>
@@ -56,6 +81,7 @@
                     <attribute name="widget"></attribute>
                     <attribute name="options">{}</attribute>
                 </xpath>
+
             </field>
         </record>
 
