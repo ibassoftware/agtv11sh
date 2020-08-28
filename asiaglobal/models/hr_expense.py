@@ -45,11 +45,17 @@ class HrExpenseSheetRegisterPaymentWizard(models.TransientModel):
 class HrExpenseSheet(models.Model):
     _inherit = 'hr.expense.sheet'
 
+    expense_type = fields.Selection([('reimbursement', 'REIMBURSEMENT'), (
+        'travel_abroad', 'TRAVEL ABROAD'), ('liquidation', 'LIQUIDATION')], string="Expense")
+    amount_of_cash = fields.Float(string="Amount of Cash Advance")
+
     expense_line_ids = fields.One2many(
         states={'done': [('readonly', True)], 'post': [('readonly', True)]})
 
     payment_date = fields.Date(string='Payment Date')
     memo = fields.Char(string='Memo')
+
+    remarks = fields.Char(string="Remarks")
 
 
 class HrExpense(models.Model):
