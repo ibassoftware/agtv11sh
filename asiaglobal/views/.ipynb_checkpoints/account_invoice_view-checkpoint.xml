@@ -31,7 +31,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='description']" position="after">
                     <field name="invoice_number" attrs="{'invisible':[('sale_refund','!=',True)],'required':[('sale_refund','=',True)]}"/>
-                    <field name="sale_refund"/>
+                    <field name="sale_refund" invisible="1"/>
                 </xpath>
             </field>
         </record>

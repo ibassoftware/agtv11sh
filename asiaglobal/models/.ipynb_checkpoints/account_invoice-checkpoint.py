@@ -2,6 +2,8 @@ from odoo import models, fields, api, _
 from odoo.addons import decimal_precision as dp
 from odoo.tools.safe_eval import safe_eval
 
+from odoo.exceptions import UserError
+
 import logging
 _logger = logging.getLogger(__name__)
 
