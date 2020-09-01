@@ -98,10 +98,10 @@ class AccountInvoiceRefund(models.TransientModel):
                 
                 if form.sale_refund:
                     sequence_code = 'account.payment.customer.refund'
-                    move_name = self.env['ir.sequence'].with_context(ir_sequence_date=form.date_invoice).next_by_code(sequence_code)
+                    invoice_number = self.env['ir.sequence'].with_context(ir_sequence_date=form.date_invoice).next_by_code(sequence_code)
                     
                     refund.write({
-                        'move_name': move_name,
+                        'move_name': invoice_number,
                     })
 
                 created_inv.append(refund.id)
