@@ -30,7 +30,7 @@
             <field name="inherit_id" ref="account.view_account_invoice_refund"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='description']" position="after">
-                    <field name="invoice_number" attrs="{'invisible':[('sale_refund','!=',True)],'required':[('sale_refund','=',True)]}" readonly="1"/>
+<!--                     <field name="invoice_number" attrs="{'invisible':[('sale_refund','!=',True)],'required':[('sale_refund','=',True)]}" readonly="1"/> -->
                     <field name="sale_refund" invisible="1"/>
                 </xpath>
             </field>
