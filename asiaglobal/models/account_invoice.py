@@ -55,9 +55,14 @@ class AccountInvoiceLine(models.Model):
 		'account.analytic.account', string='Analytic Account', default=_default_account_analytic)
     
 class AccountInvoiceRefund(models.TransientModel):
-    _inherit = 'account.invoice.refund'    
+    _inherit = 'account.invoice.refund'
     
-    invoice_number = fields.Char(string='Invoice Number')
+    @api.model
+    def _get_invoice_number(self):
+        sequence_code = 'account.payment.customer.refund'
+        return self.env['ir.sequence'].with_context(ir_sequence_date=self.date_invoice).next_by_code(sequence_code)
+    
+    invoice_number = fields.Char(string='Invoice Number', default=_get_invoice_number)
     sale_refund = fields.Boolean(compute='_get_refund_type')
     
     @api.depends('date_invoice')
@@ -95,6 +100,7 @@ class AccountInvoiceRefund(models.TransientModel):
                 _logger.info(refund)
                 
                 if form.sale_refund and form.invoice_number:
+                    
                     refund.write({
                         'move_name': form.invoice_number,
                     })
