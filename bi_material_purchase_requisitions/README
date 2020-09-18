@@ -1,0 +1,11 @@
+
+
+
+1) 11.0.0.2 | date : 28/02
+
+--> add warning if picking type internal is not defined when user try 
+to create internal picking.
+
+2)11.0.0.4 | date : 08/04/2019
+
+--> solve the issue of mandentory field(internal_picking_id) not define.
