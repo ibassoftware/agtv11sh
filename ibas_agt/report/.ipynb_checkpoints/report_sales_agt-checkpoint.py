@@ -68,7 +68,7 @@ class SalesXlsx(models.AbstractModel):
                 sales_amount = obj.price_subtotal
                 cost_amount = 0
                 _logger.info("YOW")
-                if len(move_lines) == 1:
+                if len(move_lines) > 1:
                     debit_lines = move_lines.mapped('debit')
                     nearest_debit_line = min(debit_lines, key=lambda x:abs(int(x)-int(sales_amount)))
                     for move in move_lines:
