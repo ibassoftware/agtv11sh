@@ -45,13 +45,15 @@ class HrExpenseSheetRegisterPaymentWizard(models.TransientModel):
 class HrExpenseSheet(models.Model):
     _inherit = 'hr.expense.sheet'
 
-    state = fields.Selection([
-        ('submit', 'For Approval'),
-        ('approve', 'For Head Approval'),
-        ('post', 'Posted'),
-        ('done', 'Paid'),
-        ('cancel', 'Refused'),
-    ], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', default='submit')
+    state = fields.Selection([('draft', 'For Approval'),
+                              ('submit', 'For Head Approval'),
+                              ('approve', 'Approved'),
+                              ('post', 'Posted'),
+                              ('done', 'Paid'),
+                              ('cancel', 'Refused')],
+                             string='Status', index=True, readonly=True,
+                             track_visibility='onchange', copy=False, default='draft',
+                             required=True, help='Expense Report State')
 
     approving_manager_id = fields.Many2one(
         'hr.employee',
@@ -69,6 +71,10 @@ class HrExpenseSheet(models.Model):
     memo = fields.Char(string='Memo')
 
     remarks = fields.Char(string="Remarks")
+
+    @api.multi
+    def for_approval(self):
+        self.write({'state': 'submit'})
 
 
 class HrExpense(models.Model):
