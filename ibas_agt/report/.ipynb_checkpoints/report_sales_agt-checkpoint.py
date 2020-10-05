@@ -65,7 +65,8 @@ class SalesXlsx(models.AbstractModel):
 
                 move_lines = obj.invoice_id.move_id.line_ids.filtered(lambda move: move.product_id == obj.product_id and move.account_id.code in cost_account)
 #                 move_lines = obj.invoice_id.move_id.line_ids.filtered(lambda move: move.account_id.code in cost_account)
-                sales_amount = obj.price_subtotal
+#                 sales_amount = obj.price_subtotal
+                sales_amount = obj.price_subtotal_signed
                 cost_amount = 0
                 _logger.info("YOW")
                 if len(move_lines) > 1:
