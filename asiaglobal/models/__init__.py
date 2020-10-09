@@ -31,3 +31,4 @@ from . import product
 from . import calendar
 
 from . import hr_expense
+from . import purchase_requisition

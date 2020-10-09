@@ -22,7 +22,7 @@
     # any module necessary for this one to work correctly
     'depends': ['base', 'crm', 'sale_management', 'purchase', 'hr', 'hr_expense', 'helpdesk', 'sales_team', 'account_reports',
                 'sale', 'sale_crm', 'mail', 'sale_subscription', 'product', 'stock', 'stock_account', 'account', 'account_budget', 'calendar', 'stock_analytic', 'ibas_agt',
-                'account_check_printing', 'l10n_us_check_printing'],
+                'account_check_printing', 'l10n_us_check_printing', 'bi_material_purchase_requisitions'],
 
     # always loaded
     'data': [
@@ -63,6 +63,7 @@
         'views/hr_expense_views.xml',
         'views/stock_inventory_views.xml',
         'views/account_payment_view.xml',
+        'views/purchase_requisition_views.xml',
         'report/report_quotation_service.xml',
         'report/service_report.xml',
         'report/report_job_order.xml',
