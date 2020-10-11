@@ -23,6 +23,7 @@
 				</xpath>
                 <xpath expr="//header" position="inside">
                     <button name="for_approval" states="draft" string="Approve" type="object" groups="hr_expense.group_hr_expense_manager" class="oe_highlight o_expense_sheet_approve"/>
+                    <button name="for_checking" states="check" string="Checked" type="object" groups="hr_expense.group_hr_expense_manager" class="oe_highlight o_expense_sheet_approve"/>
 				</xpath>
                 <xpath expr="//header/button[@name='approve_expense_sheets']" position="attributes">
                     <attribute name="string">Head Approve</attribute>
@@ -58,6 +59,7 @@
                             <field name="address_id" invisible="1"/>
                             <field name="department_id" invisible="1"/>
                             <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="checked_by_id"/>
                             <field name="approving_manager_id"/>
                         </group>
                         <group>

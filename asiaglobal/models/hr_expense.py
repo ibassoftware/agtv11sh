@@ -46,6 +46,7 @@ class HrExpenseSheet(models.Model):
     _inherit = 'hr.expense.sheet'
 
     state = fields.Selection([('draft', 'For Approval'),
+                              ('check', 'Checking'),
                               ('submit', 'For Head Approval'),
                               ('approve', 'Approved'),
                               ('post', 'Posted'),
@@ -60,6 +61,10 @@ class HrExpenseSheet(models.Model):
         string='Approving Manager',
     )
 
+    checked_by_id = fields.Many2one(
+        'hr.employee',
+        string='Checked by:',
+    )
     expense_type = fields.Selection([('reimbursement', 'REIMBURSEMENT'), (
         'travel_abroad', 'TRAVEL ABROAD'), ('liquidation', 'LIQUIDATION')], string="Expense")
     amount_of_cash = fields.Float(string="Amount of Cash Advance")
@@ -74,6 +79,10 @@ class HrExpenseSheet(models.Model):
 
     @api.multi
     def for_approval(self):
+        self.write({'state': 'check'})
+
+    @api.multi
+    def for_checking(self):
         self.write({'state': 'submit'})
 
 
