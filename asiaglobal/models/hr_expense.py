@@ -45,6 +45,26 @@ class HrExpenseSheetRegisterPaymentWizard(models.TransientModel):
 class HrExpenseSheet(models.Model):
     _inherit = 'hr.expense.sheet'
 
+    state = fields.Selection([('draft', 'For Approval'),
+                              ('check', 'Checking'),
+                              ('submit', 'For Head Approval'),
+                              ('approve', 'Approved'),
+                              ('post', 'Posted'),
+                              ('done', 'Paid'),
+                              ('cancel', 'Refused')],
+                             string='Status', index=True, readonly=True,
+                             track_visibility='onchange', copy=False, default='draft',
+                             required=True, help='Expense Report State')
+
+    approving_manager_id = fields.Many2one(
+        'hr.employee',
+        string='Approving Manager',
+    )
+
+    checked_by_id = fields.Many2one(
+        'hr.employee',
+        string='Checked by:',
+    )
     expense_type = fields.Selection([('reimbursement', 'REIMBURSEMENT'), (
         'travel_abroad', 'TRAVEL ABROAD'), ('liquidation', 'LIQUIDATION')], string="Expense")
     amount_of_cash = fields.Float(string="Amount of Cash Advance")
@@ -56,6 +76,14 @@ class HrExpenseSheet(models.Model):
     memo = fields.Char(string='Memo')
 
     remarks = fields.Char(string="Remarks")
+
+    @api.multi
+    def for_approval(self):
+        self.write({'state': 'check'})
+
+    @api.multi
+    def for_checking(self):
+        self.write({'state': 'submit'})
 
 
 class HrExpense(models.Model):
