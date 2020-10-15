@@ -13,7 +13,7 @@ class IBASStockMove(models.Model):
     price_before_lc = fields.Float(compute='_compute_price_before_lc', string='Unit Price before LC', store= True)
     # value_before_lc = fields.Float(compute='_compute_price_before_lc', string='Value before LC', store= True)
     value_after_lc = fields.Float(compute='_compute_price_before_lc', string='Value after LC', store= True)
-    analytic_id = fields.Many2one('account.analytic.account', compute='_compute_price_before_lc', string='Analytic Account', store= True)
+    analytic_id = fields.Many2one('account.analytic.account', compute='_compute_price_before_lc', inverse='_set_analytic_id', string='Analytic Account', store= True)
     stock_age = fields.Integer(compute='_compute_stock_age', string='Stock Age in Days')
     supplier_name = fields.Char(compute='_compute_supplier_name', string='Supplier', store=True)
     customer_name = fields.Char(compute='_compute_supplier_name', string='Customer')
@@ -39,10 +39,11 @@ class IBASStockMove(models.Model):
     @api.depends('landed_cost_value', 'value', 'quantity_done')
     def _compute_price_before_lc(self):
         for rec in self:
-            if rec.purchase_line_id:
-                rec.analytic_id = rec.purchase_line_id.account_analytic_id.id
-            else:
-                rec.analytic_id = rec.analytic_account_id.id
+            if not rec.analytic_id:
+                if rec.purchase_line_id:
+                    rec.analytic_id = rec.purchase_line_id.account_analytic_id.id
+                else:
+                    rec.analytic_id = rec.analytic_account_id.id
             if rec.landed_cost_value > 0:
                 # rec.price_before_lc = (rec.value - rec.landed_cost_value) / rec.quantity_done
                 # rec.price_before_lc = rec.value / rec.quantity_done
@@ -50,6 +51,11 @@ class IBASStockMove(models.Model):
                 if rec.quantity_done > 0:
                     rec.price_before_lc = rec.value / rec.quantity_done
                 rec.value_after_lc = rec.value + rec.landed_cost_value
+    
+    def _set_analytic_id(self):
+        for record in self:
+            if not record.analytic_id:
+                return
     
     # @api.onchange('value')
     # def _onchange_value(self):
