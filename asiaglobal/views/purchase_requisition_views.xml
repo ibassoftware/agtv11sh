@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <record id="material_purchase_requisition_form_view_extend" model="ir.ui.view">
+            <field name="name">material.purchase.requisition.form.view.extend</field>
+            <field name="model">material.purchase.requisition</field>
+            <field name="inherit_id" ref="bi_material_purchase_requisitions.material_purchase_requisition_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='requisition_responsible_id']" position="after">
+                    <field name="customer_id" />
+                </xpath>
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="currency_id" />
+                </xpath>
+                <xpath expr="//sheet" position="after">
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </xpath>
+            </field>
+        </record> 
+
+    </data>
+</odoo>

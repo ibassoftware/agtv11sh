@@ -18,6 +18,22 @@
             <field name="model">hr.expense.sheet</field>
             <field name="inherit_id" ref="hr_expense.view_hr_expense_sheet_form"/>
             <field name="arch" type="xml">
+                <xpath expr="//field[@name='state']" position="replace">
+				
+				</xpath>
+                <xpath expr="//header" position="inside">
+                    <button name="for_approval" states="draft" string="Approve" type="object" groups="hr_expense.group_hr_expense_manager" class="oe_highlight o_expense_sheet_approve"/>
+                    <button name="for_checking" states="check" string="Checked" type="object" groups="hr_expense.group_hr_expense_manager" class="oe_highlight o_expense_sheet_approve"/>
+				</xpath>
+                <xpath expr="//header/button[@name='approve_expense_sheets']" position="attributes">
+                    <attribute name="string">Head Approve</attribute>
+                    <attribute name="groups">hr_expense.group_hr_expense_manager</attribute>
+				</xpath>
+
+                <xpath expr="//sheet/div[1]" position="after">
+                   <field name="state" style="color:Red; font-size:large"/>
+                </xpath>
+
                 <xpath expr="//field[@name='expense_line_ids']" position="attributes">
                     <attribute name="attrs">{'readonly':[('state','in',['approve','done','post'])]}</attribute>
                 </xpath>
@@ -43,6 +59,8 @@
                             <field name="address_id" invisible="1"/>
                             <field name="department_id" invisible="1"/>
                             <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="checked_by_id"/>
+                            <field name="approving_manager_id"/>
                         </group>
                         <group>
                             <field name="expense_type"/>

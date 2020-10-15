@@ -18,6 +18,7 @@ class SalesXlsx(models.AbstractModel):
         
         sales_account = ['501000','502000','50400']
         cost_account = ['510000', '520000','531000']
+        matched_cost_line = []
 
         myids = self.env['account.invoice.line'].search([
             ('invoice_id.type','in',['out_invoice','out_refund']),
@@ -62,23 +63,24 @@ class SalesXlsx(models.AbstractModel):
                 sheet.write(iterator, 8, obj.name or '')
                 sheet.write(iterator, 9, obj.quantity)
 
-                move_lines = obj.invoice_id.move_id.line_ids
-                have_sales = False
-                sales_amount = 0
+                move_lines = obj.invoice_id.move_id.line_ids.filtered(lambda move: move.product_id == obj.product_id and move.account_id.code in cost_account)
+#                 move_lines = obj.invoice_id.move_id.line_ids.filtered(lambda move: move.account_id.code in cost_account)
+#                 sales_amount = obj.price_subtotal
+                sales_amount = obj.price_subtotal_signed
                 cost_amount = 0
-                if move_lines:
+                _logger.info("YOW")
+                if len(move_lines) > 1:
+                    debit_lines = move_lines.mapped('debit')
+                    nearest_debit_line = min(debit_lines, key=lambda x:abs(int(x)-int(sales_amount)))
                     for move in move_lines:
-                        if move.product_id == obj.product_id:
-                            if move.account_id.code.startswith('50'):
-                                sales_amount += move.credit
-                                have_sales = True
-                            elif move.account_id.code in cost_account:
-                                cost_amount += move.debit
-
-#                     for move in move_lines:
-#                         if move.product_id == obj.product_id:
-#                             if not move.account_id.code in sales_account and not have_sales:
-#                                 sales_amount += move.credit
+                        if move.debit == nearest_debit_line and move.id not in matched_cost_line:
+                            cost_amount += move.debit
+                            matched_cost_line.append(move.id)
+                else:
+                     for move in move_lines:
+                        if move.id not in matched_cost_line:
+                            cost_amount += move.debit
+                            matched_cost_line.append(move.id)
 
                 gross_margin = sales_amount - cost_amount          
                 if obj.invoice_id.type == 'out_refund':
