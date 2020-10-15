@@ -370,6 +370,195 @@
             </t>
         </template>
         <!-- END APV IN EXPENSE -->
+        
+        <!-- START APV ZERO IN EXPENSE -->
+        <template id="report_account_payable_voucher_zero_expense_document">
+            <t t-call="asiaglobal.external_layout_account_payable_voucher">
+                <div class="page" style="font-size:12px;">
+                    <br/>
+                    <center>
+                        <h3>
+                            <span>ACCOUNTS PAYABLE VOUCHERS</span>
+                        </h3>
+                        <!-- <span t-if="not o.date_done" t-esc="datetime.datetime.strptime(o.scheduled_date, '%Y-%m-%d %H:%M:%S').strftime('%B %d, %Y')"/>
+                        <span t-if="o.date_done" t-esc="datetime.datetime.strptime(o.date_done, '%Y-%m-%d %H:%M:%S').strftime('%B %d, %Y')"/> -->
+                    </center>
+                    <br/>
+                    <table class="list_table" style="border: 1px solid #808080;height:805px;page-break-after:auto;" width="100%" cellspacing="0">
+                        <tr>
+                            <td colspan="2" rowspan="2" class="noborder" valign="top" width="70%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                <b>PAYEE: </b> <span t-field="o.employee_id.name"/>
+                            </td>
+                            <td colspan="2" class="noborder" valign="top" width="30%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                <b>REF No. </b> <!-- <span t-field="o.name"/> -->
+                                <span t-field="o.account_move_id.name"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="noborder" valign="top" width="30%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                <b>DATE: </b> <span t-field="o.accounting_date"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="noborder" valign="top" width="100%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                <b>PARTICULARS</b><br/>
+                                <!-- <span t-field="o.reference"/> -->
+                                <t t-set="expense_line_1" t-value="False"/>
+                                <t t-set="expense_line_2" t-value="False"/>
+                                <t t-set="expense_line_3" t-value="False"/>
+                                <t t-set="expense_line_4" t-value="False"/>
+                                <t t-set="expense_count" t-value="0"/>
+                                <t t-set="expense_total_count" t-value="len(o.expense_line_ids)"/>
+                                <t t-set="expense_line_count" t-value="0"/>
+                                <t t-set="remaining_lines" t-value="expense_total_count"/>
+                                <t t-set="remaining_line_count" t-value="0"/>
+                                
+                                <t t-foreach="o.expense_line_ids" t-as="expense">
+                                    <t t-set="remaining_lines" t-value="remaining_lines - 1"/>
+                                    <t t-if="remaining_lines &lt; 4">
+                                        <t t-set="remaining_line_count" t-value="remaining_lines - 1"/>
+                                    </t>
+                                    
+                                    <t t-set="expense_line_count" t-value="expense_line_count + 1"/>
+                                    <t t-if="expense_line_count == 1">
+                                        <t t-set="expense_line_1" t-value="expense.name"/>
+                                    </t>
+                                    <t t-if="expense_line_count == 2">
+                                        <t t-set="expense_line_2" t-value="expense.name"/>
+                                    </t>
+                                    <t t-if="expense_line_count == 3">
+                                        <t t-set="expense_line_3" t-value="expense.name"/>
+                                    </t>
+                                    <t t-if="expense_line_count == 4">
+                                        <t t-set="expense_line_4" t-value="expense.name"/>
+                                    </t>
+                                    <t t-if="expense_total_count >= 4 and expense_line_count == 4 and expense_line_1 and expense_line_2 and expense_line_3 and expense_line_4">
+                                        <div class="col-xs-3">
+                                            <span t-esc="expense_line_1"/>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <span t-esc="expense_line_2"/>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <span t-esc="expense_line_3"/>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <span t-esc="expense_line_4"/>
+                                        </div>
+                                        <t t-set="expense_line_count" t-value="0"/>
+                                        <t t-set="expense_line_1" t-value="False"/>
+                                        <t t-set="expense_line_2" t-value="False"/>
+                                        <t t-set="expense_line_3" t-value="False"/>
+                                        <t t-set="expense_line_4" t-value="False"/>
+                                        
+                                    </t>
+                                                                    
+                                    <t t-if="remaining_lines == 0 and remaining_line_count == -1">
+                                        <div class="col-xs-3">
+                                            <span t-esc="expense_line_1"/>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <span t-esc="expense_line_2"/>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <span t-esc="expense_line_3"/>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <span t-esc="expense_line_4"/>
+                                        </div>
+                                        <t t-set="expense_line_count" t-value="0"/>
+                                        <t t-set="expense_line_1" t-value="False"/>
+                                        <t t-set="expense_line_2" t-value="False"/>
+                                        <t t-set="expense_line_3" t-value="False"/>
+                                        <t t-set="expense_line_4" t-value="False"/>
+                                    </t>
+                                    
+                                    
+                                    
+                                </t>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="noborder text-center" valign="top" width="70%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                <b>ACCOUNT TITLE</b>
+                            </td>
+                            <td class="noborder text-center" valign="top" width="15%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                <b>DEBIT</b>
+                            </td>
+                            <td class="noborder text-center" valign="top" width="15%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                <b>CREDIT</b>
+                            </td>
+                        </tr>
+                        <t t-set="line_count" t-value="0"/>
+                        <t t-foreach="o.account_move_id.line_ids.sorted(key=lambda r: r.debit, reverse=True)" t-as="move">
+                            <t t-set="line_count" t-value="line_count + 1"/>
+                            <tr>
+                                <t t-if="move.debit == 0 and move.credit != 0">
+                                    <td class="noborder text-right" valign="top" width="40%" style="border:0;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                        <span t-field="move.account_id.name"/>
+                                    </td>
+                                </t>
+                                <t t-else="">
+                                    <td class="noborder" valign="top" width="40%" style="border:0;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                        <span t-field="move.account_id.name"/>
+                                    </td>
+                                </t>
+                                
+                                <td class="noborder text-center" valign="top" width="30%" style="border:0;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                    <span t-field="move.analytic_account_id.name"/>
+                                </td>
+                                <td class="noborder text-right" valign="top" width="15%" style="border-style:solid;border-color:#808080;border-width:0px 1px 0px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;border-bottom:none;border-top:none;">
+                                    <!-- <span t-field="move.debit"/> -->
+                                    <t t-if="move.debit != 0">
+                                        <span t-esc="'{0:,.2f}'.format(move.debit)" />
+                                    </t>
+                                </td>
+                                <td class="noborder text-right" valign="top" width="15%" style="border-style:solid;border-color:#808080;border-width:0px 1px 0px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;border-bottom:none;border-top:none;">
+                                    <!-- <span t-field="move.credit"/> -->
+                                    <t t-if="move.credit != 0">
+                                        <span t-esc="'{0:,.2f}'.format(move.credit)" />
+                                    </t>
+                                </td>
+                            </tr>
+                        </t>
+                        <tr style="height:100%;page-break-inside:avoid;page-break-after:auto;">
+                            <td colspan="2" class="noborder text-center" valign="top" width="70%" style="border:0;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                <br/>
+                            </td>
+                            <td class="noborder text-center" valign="top" width="15%" style="border-style:solid;border-color:#808080;border-width:0px 1px 0px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;border-bottom:none;border-top:none;">
+                                <br/>
+                            </td>
+                            <td class="noborder text-center" valign="top" width="15%" style="border-style:solid;border-color:#808080;border-width:0px 1px 0px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;border-bottom:none;border-top:none;">
+                                <br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="noborder text-right" valign="top" width="70%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                <b>TOTAL AMOUNT PAYABLE </b>
+                            </td>
+                            <td class="noborder text-center" valign="top" width="15%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                <b><span t-field="o.currency_id.symbol"/></b>
+                            </td>
+                            <td class="noborder text-center" valign="top" width="15%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                            <!-- <b><span t-esc="'{0:,.2f}'.format(o.total_amount)" /></b> -->
+                                <b><span>0.00</span></b>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </t> 
+        </template>
+
+        <template id="report_account_payable_voucher_zero_expense">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="asiaglobal.report_account_payable_voucher_zero_expense_document"/>
+                </t>
+            </t>
+        </template>
+        <!-- END APV IN EXPENSE -->
 
     </data>
 </odoo>
