@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- START APV IN EXPENSE -->
+        <template id="report_apv_expense_document">
+            <t t-call="asiaglobal.external_layout_apv_expense">
+                <div class="page" style="font-size:12px;">
+                    <br/>
+                    <center>
+                        <h3>
+                            <span>EXPENSE REPORT</span>
+                        </h3>
+                    </center>
+                    <br/>
+                    <table class="list_table" style="border: 1px solid #808080;height:805px;page-break-after:auto;" width="100%" cellspacing="0">
+                        <tr>
+                            <td colspan="2" class="noborder" valign="top" width="65%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                <b>EMPLOYEE: </b> <span t-field="o.employee_id.name"/>
+                            </td>
+                            <td colspan="2" class="noborder" valign="top" width="35%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                <b>ANALYTIC ACCOUNT: </b>
+                               <!-- <t t-foreach="o.expense_line_ids" t-as="line">
+                                    <t t-if="line.analytic_account_id">
+                                        <span t-field="line.analytic_account_id.name"/>
+                                    </t>
+                                </t> -->
+                                <span t-field="o.expense_line_ids[0].analytic_account_id.name"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" rowspan="2" class="noborder" valign="top" width="65%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                <span>
+                                <t t-if="o.expense_type == 'reimbursement'"><input type="checkbox" checked="checked"/></t>
+                                <t t-else=""><input type="checkbox"/></t>
+                                </span><span> REIMBURSEMNET</span><br/>
+
+                                <span>
+                                <t t-if="o.expense_type == 'travel_abroad'"><input type="checkbox" checked="checked"/></t>
+                                <t t-else=""><input type="checkbox"/></t>
+                                </span><span> TRAVEL ABROAD</span><br/>
+
+                                <span>
+                                <t t-if="o.expense_type == 'liquidation'"><input type="checkbox" checked="checked"/></t>
+                                <t t-else=""><input type="checkbox"/></t>
+                                </span><span> LIQUIDATION</span><br/>
+                               
+                            </td>
+
+                            <td colspan="2" class="noborder" valign="top" width="35%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                <b>DATE: </b> <span t-field="o.accounting_date"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            
+                            <td colspan="2" class="noborder" valign="top" width="35%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                <b>CASH ADVANCE: </b> <span t-esc="'{0:,.2f}'.format(o.amount_of_cash)"/>
+                            </td>
+                        </tr>
+                        <tr>
+         
+                        </tr>
+                        <tr>
+                            <td class="noborder text-center" valign="top" width="15%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                <b>DATE</b>
+                            </td>
+                            <td class="noborder text-center" valign="top" width="50%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                <b>EXPENSE DESCRIPTION</b>
+                            </td>
+                            <td class="noborder text-center" valign="top" width="20%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                <b>BILL REF</b>
+                            </td>
+                            <td class="noborder text-center" valign="top" width="15%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                <b>TOTAL AMOUNT</b>
+                            </td>
+                        </tr>
+
+                        <t t-set="line_count" t-value="0"/>
+                        <t t-set="total_amount" t-value="0"/>
+                        <t t-foreach="o.expense_line_ids" t-as="line">
+                            <t t-set="line_count" t-value="line_count + 1"/>
+                            <t t-set="total_amount" t-value="total_amount + line.total_amount"/>
+                            <tr>
+                                <td class="noborder text-center" valign="top" width="15%" style="border:0;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                    <span t-field="line.date"/>
+                                </td>
+                                <td class="noborder text-center" valign="top" width="50%" style="border-style:solid;border-color:#808080;border-width:0px 1px 0px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;border-bottom:none;border-top:none;">
+                                   <span t-field="line.name"/>
+                                </td>
+                                <td class="noborder text-right" valign="top" width="20%" style="border-style:solid;border-color:#808080;border-width:0px 1px 0px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;border-bottom:none;border-top:none;">
+                                    <span t-field="line.reference"/>
+                                </td>
+                                <td class="noborder text-right" valign="top" width="15%" style="border-style:solid;border-color:#808080;border-width:0px 1px 0px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;border-bottom:none;border-top:none;">
+                                    <span t-field="line.total_amount"/>
+                                </td>
+                            </tr>
+                        </t>
+                        
+                        <tr style="height:100%;page-break-inside:avoid;page-break-after:auto;">
+                             <td class="noborder text-center" valign="top" width="15%" style="border:0;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                <br/>
+                            </td>
+                            <td class="noborder text-center" valign="top" width="50%" style="border-style:solid;border-color:#808080;border-width:0px 1px 0px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;border-bottom:none;border-top:none;">
+                                <br/>
+                            </td>
+                            <td class="noborder text-center" valign="top" width="20%" style="border-style:solid;border-color:#808080;border-width:0px 1px 0px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;border-bottom:none;border-top:none;">
+                                <br/>
+                            </td>
+                            <td class="noborder text-center" valign="top" width="15%" style="border-style:solid;border-color:#808080;border-width:0px 1px 0px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;border-bottom:none;border-top:none;">
+                                <br/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2" class="noborder text-right" valign="top" width="70%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                
+                            </td>
+                            <td class="noborder text-center" valign="top" width="15%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                               <b>TOTAL AMOUNT PAYABLE </b>
+                            </td>
+                            <td class="noborder text-center" valign="top" width="15%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                                <span t-esc="total_amount" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td colspan="4" rowspan="2" class="noborder" valign="top" width="15%" style="border-style:solid;border-color:#808080;border-width:1px 1px 1px 1px;padding-left:0.5em;padding-top:0.5em;padding-right:0.5em;padding-bottom:0.5em;">
+                               <b>Remarks:</b> <u><span t-field="o.remarks"/></u> <br/>
+                               <!--<b>__________________________________________________________________________________________________________________________</b>-->
+                            </td>
+                        </tr>
+                    </table>
+               
+                </div>
+            </t> 
+        </template>
+
+        <template id="report_apv_expense">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="asiaglobal.report_apv_expense_document"/>
+                </t>
+            </t>
+        </template>
+        <!-- END APV IN EXPENSE -->
+
+    </data>
+</odoo>
