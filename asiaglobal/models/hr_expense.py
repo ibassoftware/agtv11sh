@@ -78,7 +78,7 @@ class HrExpenseSheet(models.Model):
     remarks = fields.Char(string="Remarks")
 
     @api.multi
-    def for_approval(self):
+    def for_approve(self):
         self.write({'state': 'check'})
 
     @api.multi
