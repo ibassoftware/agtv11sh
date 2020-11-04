@@ -78,13 +78,17 @@ class HrExpenseSheet(models.Model):
     remarks = fields.Char(string="Remarks")
 
     @api.multi
-    def for_approval(self):
+    def for_approve(self):
         self.write({'state': 'check'})
 
     @api.multi
     def for_checking(self):
         self.write({'state': 'submit'})
-
+        
+    @api.multi
+    def reset_expense_sheets(self):
+        self.mapped('expense_line_ids').write({'is_refused': False})
+        return self.write({'state': 'draft'})
 
 class HrExpense(models.Model):
     _inherit = 'hr.expense'
