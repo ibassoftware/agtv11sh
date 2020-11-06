@@ -22,7 +22,7 @@
 				
 				</xpath>
                 <xpath expr="//header/button[@name='approve_expense_sheets']" position="after">
-                    <button name="for_approve" states="draft" string="Approved" type="object" groups="hr_expense.group_hr_expense_manager" class="oe_highlight"/>
+                    <button name="for_approve" states="draft,cancel" string="Approved" type="object" groups="hr_expense.group_hr_expense_manager" class="oe_highlight"/>
                     <button name="for_checking" states="check" string="Checked" type="object" groups="hr_expense.group_hr_expense_manager" class="oe_highlight"/>
 				</xpath>
                 <xpath expr="//header/button[@name='approve_expense_sheets']" position="attributes">
