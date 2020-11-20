@@ -52,11 +52,10 @@ class SaleOrder(models.Model):
     @api.multi
     def action_confirm(self):
         for sale in self:
-            for line in sale.order_line:
-                if line.product_id.sale_line_warn != 'no-message':
-                    title = _("Warning for %s") % line.product_id.name
-                    message = line.product_id.sale_line_warn_msg
-                    raise UserError(_('Cannot confirm order! \n %s \n %s') %(title, message))
+            if sale.partner_id.sale_warn != 'no-message':
+                title = _("Warning for %s") % sale.partner_id.name
+                message = sale.partner_id.sale_warn_msg
+                raise UserError(_('Cannot confirm order! \n %s \n %s') %(title, message))
         result = super(SaleOrder, self).action_confirm()
         return result
 
