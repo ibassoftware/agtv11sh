@@ -1,6 +1,6 @@
 from odoo import models, fields, api, _
 from odoo.addons import decimal_precision as dp
-
+from odoo.exceptions import UserError
 
 class SaleOrder(models.Model):
 
@@ -48,6 +48,17 @@ class SaleOrder(models.Model):
         for record in self:
             record._get_invoiced()
         return True
+    
+    @api.multi
+    def action_confirm(self):
+        for sale in self:
+            for line in sale.order_line:
+                if line.product_id.sale_line_warn != 'no-message':
+                    title = _("Warning for %s") % line.product_id.name
+                    message = line.product_id.sale_line_warn_msg
+                    raise UserError(_('Cannot confirm order! \n %s \n %s') %(title, message))
+        result = super(SaleOrder, self).action_confirm()
+        return result
 
 
 class SaleOrderLine(models.Model):
