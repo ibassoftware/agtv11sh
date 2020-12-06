@@ -25,6 +25,11 @@
             <field name="name">Access To Lock Fiscal Period</field>
             <field name="category_id" ref="base.module_category_hidden"/>
         </record>
+        
+        <record id="group_not_allow_product_create" model="res.groups">
+            <field name="name">Restrict Product Create</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
 
     </data>
 </odoo>
